@@ -1,0 +1,441 @@
+//------------------------------------
+//    VARIABLE INITIALIZATION
+//------------------------------------
+
+let currentSection = 0;
+let currentQuestion = 0;
+let timerVisible = true;
+let timerStatus = false;
+let questions, answers;
+let timeRemaining, timer;
+let markStatus;
+
+
+//------------------------------------
+//      GRE TEST STRUCTURE
+//------------------------------------
+
+
+const greTest = {
+
+    testName: "GRE Practice Test 1",
+
+    sections: [
+
+        {
+            name: "Verbal Reasoning 1",
+            time: 1080,
+            set_name: verbalSection1
+        },
+
+        {
+            name: "Quantitative Reasoning 1",
+            time: 1260,
+            set_name: quantSection1
+        },
+
+        {
+            name: "Verbal Reasoning 2",
+            time: 1380,
+            set_name: verbalSection2
+        },
+
+        {
+            name: "Quantitative Reasoning 2",
+            time: 1560,
+            set_name: quantSection2
+        }
+
+    ]
+
+};
+
+//--------------------------
+//    NEXT QUESTION  
+//--------------------------
+
+function nextQuestion(){
+    currentQuestion++;
+    currentQuestion = Math.min(questions.length-1, currentQuestion);
+    renderQuestion();
+}
+
+//--------------------------
+//    PREVIOUS QUESTION  
+//--------------------------
+
+function previousQuestion(){
+    currentQuestion--;
+    currentQuestion = Math.max(0, currentQuestion);
+    renderQuestion();
+}
+
+
+
+//-------------------------
+//     TIME UPDATE
+//-------------------------
+
+
+function timerDisplay(){
+    const minutes = Math.floor(timeRemaining/60);
+    const seconds = timeRemaining % 60;
+
+    document.querySelector("#timer").textContent = 
+    `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+}
+
+
+function timerUpdate() {
+
+    if (timeRemaining > 0) {
+        timeRemaining--;
+        timerDisplay();
+    }
+    //end section condition
+    if(timeRemaining <= 0){
+        clearInterval(timer);
+        timer = null;
+        currentSection++;
+
+        if (currentSection >= greTest.sections.length) {
+            finishTest();
+            return;
+        }
+
+        renderTest();
+        return;
+    }
+}
+
+//------------------------------
+//      TIME TOGGLE
+//------------------------------
+
+function toggleTime() {
+    timerStatus = !timerStatus;
+    const timer = document.querySelector("#timer");
+    if(timerStatus){
+        timer.classList.add("time-hide");
+        document.querySelector('#hide').innerHTML ="Show";
+    }
+    else{
+        timer.classList.remove("time-hide");
+        document.querySelector('#hide').innerHTML ="Hide";
+    }
+}
+
+
+//------------------------------
+//      REVIEW WINDOW
+//------------------------------
+
+
+function reviewTable() {
+    const tableBody = document.querySelector('#review-table-body');
+    const modal = document.querySelector('#modal');
+    const mainPrompt = document.querySelector('#main-prompt');
+
+    const navBar = document.querySelector('#nav');
+    const reviewNav = document.querySelector('#review-nav');
+
+    const questionNum = document.querySelector('#question-number');
+    questionNum.classList.add("hidden");
+
+
+    tableBody.innerHTML = "";
+    modal.classList.remove("hidden");
+    mainPrompt.classList.add("hidden");
+
+    navBar.classList.add("hidden");
+    reviewNav.classList.remove("hidden");
+
+    questions.forEach((question, index)=>{
+
+        // CREATE ROW
+        const row = document.createElement("tr");
+
+        // CREATE CELLS
+        const questionCell = document.createElement("td");
+        const statusCell = document.createElement("td");
+        const markCell = document.createElement("td");
+
+        // PUT DATA INSIDE THE CELLS
+        questionCell.textContent = index + 1;
+
+        // ANSWER CELL LOGIC
+        if(question.type === "sentence-equivalence"){
+            if (answers[index].length >= 2) {
+                statusCell.textContent = "Answered";
+            }
+            else{
+                statusCell.textContent = "Not Answered";
+            }
+        }
+        else{
+            if(answers[index].length > 0){
+                statusCell.textContent = "Answered";
+            }
+            else{
+                statusCell.textContent = "Not Answered";
+            }
+        }
+
+        // MARK CELL LOGIC
+        if(markStatus[index]){
+            markCell.textContent = "✓";
+        }
+        else{
+            markCell.textContent = "";
+        }
+
+        // PUT CELLS INSIDE THE ROW
+        row.append(questionCell);
+        row.append(statusCell);
+        row.append(markCell);
+
+        // Make entire row clickable
+        row.addEventListener("click",()=>{
+            currentQuestion = index;
+            renderQuestion();
+
+            modal.classList.add("hidden");
+            mainPrompt.classList.remove("hidden");
+
+            navBar.classList.remove("hidden");
+            reviewNav.classList.add("hidden");
+
+            const questionNum = document.querySelector('#question-number');
+            questionNum.classList.remove("hidden");
+        });
+
+        // PUT ROW INSIDE THE TABLE
+        tableBody.append(row);
+    });
+}
+
+
+//----------------------------------
+//        CLOSE REVIEW WINDOW
+//----------------------------------
+
+function closeReview(){
+    const mainPrompt = document.querySelector('#main-prompt');
+    const modal = document.querySelector('#modal');
+    const navBar = document.querySelector('#nav');
+    const reviewNav = document.querySelector('#review-nav');
+
+    modal.classList.add("hidden");
+    mainPrompt.classList.remove("hidden");
+
+    navBar.classList.remove("hidden");
+    reviewNav.classList.add("hidden");
+
+    const questionNum = document.querySelector('#question-number');
+    questionNum.classList.remove("hidden");
+}
+
+
+//-----------------------------
+//      MARK QUESTION
+//-----------------------------
+
+
+function markQuestion(){
+    markStatus[currentQuestion] = !markStatus[currentQuestion];
+        
+    markQuestionStatus();
+}
+
+
+
+function markQuestionStatus() {
+
+    const mark = document.querySelector('#mark');
+
+    if(markStatus[currentQuestion]){
+        mark.innerHTML = "Marked";
+        mark.classList.add("mark-active");
+        }
+        else{
+        mark.innerHTML = "Mark";
+        mark.classList.remove("mark-active");
+        }
+}
+
+
+//-----------------------------
+//       RENDER TEST 
+//-----------------------------
+
+
+function renderTest() {
+
+    const sectionHeader = document.querySelector('#section-header');
+    const sectionPrompt = document.querySelector('#section-prompt');
+
+    sectionHeader.classList.add("hidden");
+    sectionPrompt.classList.add("hidden");
+
+    const startSection = document.querySelector('#start-section');
+    startSection.classList.remove("hidden");
+
+    if (currentSection != 0) {
+        document.querySelector('#start-section').innerHTML = "Next Section";
+    }
+    
+    document.querySelector('#start-section').onclick = renderSection;
+
+}
+
+//------------------------------------
+//         RENDER SECTION
+//------------------------------------
+
+
+function renderSection() {
+
+    // Activate section-header and section-prompt
+    const sectionHeader = document.querySelector('#section-header');
+    const sectionPrompt = document.querySelector('#section-prompt');
+    
+
+    sectionHeader.classList.remove("hidden");
+    sectionPrompt.classList.remove("hidden");
+
+    const startSection = document.querySelector('#start-section');
+    startSection.classList.add("hidden");
+
+    
+    
+    currentQuestion = 0;
+    timeRemaining = greTest.sections[currentSection].time;
+    questions = greTest.sections[currentSection].set_name;
+    answers = questions.map(()=>[]);
+    markStatus = questions.map(()=>false);
+    
+
+    //--------START TIMER-------
+
+    if (timer) {
+        clearInterval(timer);
+    }
+    timer = setInterval(timerUpdate, 1000);
+
+    renderQuestion();
+    
+
+}
+
+
+//------------------------------------
+//        QUESTION ENVIRONMENT
+//------------------------------------
+
+
+function questionEnv() {
+
+    const passageContainer = document.querySelector(".passage-container");
+    const questionContainer = document.querySelector(".question-container");
+
+    if (questions[currentQuestion].type !== "reading-single") {
+
+        // Hide passage
+        passageContainer.style.display = "none";
+
+        // Make question area 80%
+        questionContainer.style.flex = "none";
+        questionContainer.style.width = "100%";
+        questionContainer.style.padding = "0 5%";
+
+
+        const envChoice = document.querySelector('#choices');
+        envChoice.style.margin = "0 3%";
+
+    } else {
+
+        // Show passage
+        passageContainer.style.display = "";
+
+        // Return to two equal columns
+        questionContainer.style.width = "";
+        questionContainer.style.flex = "4";
+        questionContainer.style.padding = "0 0";
+
+
+        const envChoice = document.querySelector('#choices');
+        envChoice.style.margin = "0";
+
+    }
+}
+
+
+//----------------------------------
+//       QUESTION RENDERING
+//----------------------------------
+
+
+function renderQuestion() {
+    //document.querySelector('test-title').textContent = greTest.testName;
+    document.querySelector('#question-number').innerHTML=`Question ${currentQuestion + 1} of  ${questions.length}`;
+    document.querySelector('#question').innerHTML= questions[currentQuestion].question;
+    document.querySelector('#instruction').innerHTML= questions[currentQuestion].instruction;
+
+    questionEnv();
+    renderChoices();
+    markQuestionStatus();
+    
+
+
+
+    document.querySelector('#next').onclick = nextQuestion;
+    document.querySelector('#previous').onclick = previousQuestion;
+    document.querySelector('#hide').onclick = toggleTime;
+    document.querySelector('#mark').onclick = markQuestion;
+    document.querySelector('#review').onclick = reviewTable;
+    document.querySelector('#close-Review').onclick = closeReview;
+    document.querySelector('#go-question').onclick = closeReview;
+
+    document.querySelector('#quit').onclick = finishTest;
+    document.querySelector('#end-section').onclick = finishSection;
+    document.querySelector('#quit-r').onclick = finishTest;
+    document.querySelector('#end-section-r').onclick = finishSection;
+}
+
+
+//--------------------------------------
+//     FINISH SECTION AND QUIT TEST ?
+//--------------------------------------
+
+function finishSection() {
+
+    if (currentSection < greTest.sections.length - 1) {
+
+        nextSection();
+    }
+    else {
+        finishTest();
+    }
+}
+
+function nextSection() {
+    currentSection++;
+    renderTest();
+}
+
+
+function finishTest() {
+
+    clearInterval(timer);
+    timer = null;
+    alert("Test Completed.");
+}
+
+//-----------------------------------
+//        CONTENT LOADING 
+//-----------------------------------
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    renderTest();
+});

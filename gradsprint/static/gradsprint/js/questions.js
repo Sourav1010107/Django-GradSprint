@@ -1,0 +1,1751 @@
+const verbalSection1 = [
+
+    // =========================
+    // TEXT COMPLETION
+    // =========================
+
+    {
+        id: 1,
+        type: "text-completion",
+        difficulty: "easy",
+        question:
+            "Although the scientist was initially skeptical of the new theory, the abundance of supporting evidence eventually made her ______ it.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "reject",
+                    "accept",
+                    "ignore",
+                    "conceal",
+                    "misrepresent"
+                ]
+            }
+        ],
+        answer: [0]
+        
+    },
+
+    {
+        id: 2,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The professor's lectures were anything but ______; even difficult theoretical concepts became engaging through his vivid examples and unexpected humor.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "tedious",
+                    "systematic",
+                    "controversial",
+                    "concise",
+                    "informative"
+                ]
+            }
+        ],
+        answer: [0]
+    },
+
+    {
+        id: 3,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Because the historian regarded sweeping explanations with suspicion, her account of the revolution is deliberately ______, emphasizing local circumstances rather than proposing a single universal cause.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "dogmatic",
+                    "nuanced",
+                    "polemical",
+                    "predictive",
+                    "reductive"
+                ]
+            }
+        ],
+        answer: [1]
+    },
+
+    {
+        id: 4,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The committee's report was initially praised for its (i) ______ analysis, but critics later argued that several of its conclusions rested on (ii) ______ assumptions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "rigorous",
+                    "superficial",
+                    "erratic"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "questionable",
+                    "empirical",
+                    "transparent"
+                ],
+            }
+        ],
+        answer: [0, 0]
+    },
+
+    {
+        id: 5,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Far from being (i) ______, the novelist's style is deliberately restrained; yet this apparent simplicity can be (ii) ______, since beneath the plain language lies a remarkably (iii) ______ network of allusions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "ornate",
+                    "lucid",
+                    "economical"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "deceptive",
+                    "refreshing",
+                    "predictable"
+                ],
+            },
+            {
+                id: 3,
+                choices: [
+                    "intricate",
+                    "limited",
+                    "obvious"
+                ],
+            }
+        ],
+        answer: [0, 0, 0]
+    },
+
+
+    // =========================
+    // SENTENCE EQUIVALENCE
+    // =========================
+
+    {
+        id: 6,
+        type: "sentence-equivalence",
+        difficulty: "easy",
+        question:
+            "The mayor's explanation was so ______ that even her political opponents admitted that they understood precisely why the policy had been adopted.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "lucid",
+            "ambiguous",
+            "transparent",
+            "convoluted",
+            "evasive",
+            "cryptic"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 7,
+        type: "sentence-equivalence",
+        difficulty: "medium",
+        question:
+            "Despite his reputation for arrogance, the celebrated researcher was surprisingly ______ when discussing the limitations of his own work.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "modest",
+            "boastful",
+            "unassuming",
+            "dogmatic",
+            "dismissive",
+            "imperious"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 8,
+        type: "sentence-equivalence",
+        difficulty: "hard",
+        question:
+            "The critic's seemingly complimentary review was actually ______, containing subtle remarks that undermined nearly every aspect of the author's argument.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "laudatory",
+            "caustic",
+            "innocuous",
+            "acerbic",
+            "effusive",
+            "deferential"
+        ],
+        answer: [1, 3]
+    },
+
+
+    // =========================
+    // SHORT READING PASSAGE
+    // =========================
+
+    {
+        id: 9,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        passage:
+            `For many years, economists assumed that improvements in transportation would inevitably reduce regional differences in 
+            prices. Better transportation, after all, allows goods to move more cheaply between markets. Recent studies, however, suggest 
+            a more complicated pattern. Reduced transportation costs may encourage regions to specialize in different industries. Such 
+            specialization can increase differences in wages and land prices even while the prices of traded goods become more uniform.`,
+
+        question:
+            "The passage is primarily concerned with",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "rejecting the claim that transportation affects regional economies",
+            "explaining why transportation improvements may have contrasting effects on regional price differences",
+            "arguing that industrial specialization always increases wages",
+            "describing the historical development of transportation networks",
+            "showing that economists no longer study regional prices"
+        ],
+
+        answer: [1]
+    },
+
+    {
+        id: 10,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        question:
+            "According to the passage, lower transportation costs can contribute to regional differences by",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "preventing goods from moving between regions",
+            "causing economists to ignore land prices",
+            "encouraging regions to specialize economically",
+            "increasing the prices of all traded goods",
+            "reducing differences in wages"
+        ],
+
+        answer: [2]
+    },
+
+
+    // =========================
+    // LONG READING PASSAGE
+    // =========================
+
+    {
+        id: 11,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        passage:
+            `<h4>Long Passage</h4>
+            <p>hello Early studies of urban tree planting emphasized its aesthetic benefits. Trees, researchers argued, improved the visual character of 
+            densely built neighborhoods and therefore contributed indirectly to residents' well-being. More recent research has broadened this view by 
+            examining measurable environmental effects. Urban trees can reduce surface temperatures by providing shade and can absorb some airborne pollutants.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+These qualifications do not imply that urban planting programs are misguided. Rather, they suggest that policymakers should resist treating tree coverage 
+as a universal solution. A program appropriate for a humid city with abundant rainfall may be poorly suited to an arid city facing severe water shortages. 
+The relevant question, therefore, is not simply whether cities should plant more trees, but where, what kind, and under what environmental conditions.</p>`,
+
+        question:
+            "Which of the following best describes the author's main argument?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Urban tree planting should be abandoned in cities with limited water.",
+            "The aesthetic benefits of urban trees are greater than their environmental benefits.",
+            "Urban tree-planting policies should account for local environmental conditions rather than follow a universal approach.",
+            "Researchers have exaggerated the ability of trees to absorb pollutants.",
+            "Cities should prioritize tree planting over other environmental policies."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 12,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "Which TWO of the following statements are supported by the passage?",
+
+        instruction: "Select two answers.",
+
+        maxSelections: 2,
+
+        choices: [
+            "The environmental effects of trees are identical across different climates.",
+            "Earlier research focused substantially on the aesthetic value of urban trees.",
+            "Urban trees eliminate the need for other environmental policies.",
+            "The effectiveness of planting programs can depend on tree species.",
+            "Arid cities should never plant trees."
+        ],
+
+        answer: [1, 3]
+    },
+
+    {
+        id: 13,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "The author's discussion of humid and arid cities serves primarily to",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "demonstrate why environmental policies may need to vary according to local conditions",
+            "prove that humid cities have superior environmental policies",
+            "show that trees require no maintenance in humid environments",
+            "challenge the claim that trees provide shade",
+            "explain why cities have different population densities"
+        ],
+
+        answer: [0]
+    },
+
+
+    // =========================
+    // ARGUMENT / INFERENCE RC
+    // =========================
+
+    {
+        id: 14,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 14,
+
+        passage:
+            `A museum recently extended its opening hours by two hours each evening. Attendance subsequently increased by 15 
+            percent. Museum administrators concluded that the extended hours caused the increase and therefore proposed 
+            remaining open even later. However, during the same period the museum opened a highly publicized exhibition that 
+            attracted visitors from across the region.`,
+
+        question:
+            "Which of the following most seriously weakens the administrators' conclusion?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Some museum employees prefer working during the evening.",
+            "Other museums in the region close earlier.",
+            "The new exhibition may have been responsible for much of the increase in attendance.",
+            "The museum charges the same admission price throughout the day.",
+            "Attendance varies somewhat from day to day."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 15,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 15,
+
+        passage:
+            `Researchers studying scientific collaboration have found that teams composed of specialists from several disciplines 
+            often generate more novel ideas than teams whose members share similar expertise. Yet interdisciplinary teams also take 
+            longer, on average, to complete projects. Researchers suggest that participants must spend considerable time establishing 
+            a common vocabulary and reconciling different methodological assumptions.`,
+
+        question:
+            "Which of the following can most reasonably be inferred from the passage?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Interdisciplinary research is always preferable to research conducted within one discipline.",
+            "Methodological disagreements make interdisciplinary projects unlikely to succeed.",
+            "Some of the benefits of interdisciplinary collaboration may come at the cost of greater coordination demands.",
+            "Researchers from the same discipline never generate novel ideas.",
+            "A common vocabulary eliminates all delays in interdisciplinary projects."
+        ],
+
+        answer: [2]
+    }
+
+];
+
+const verbalSection2 = [
+
+    // =========================
+    // TEXT COMPLETION
+    // =========================
+
+    {
+        id: 1,
+        type: "text-completion",
+        difficulty: "easy",
+        question:
+            "Although the scientist was initially skeptical of the new theory, the abundance of supporting evidence eventually made her ______ it.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "reject",
+                    "accept",
+                    "ignore",
+                    "conceal",
+                    "misrepresent"
+                ]
+            }
+        ],
+        answer: [0]
+        
+    },
+
+    {
+        id: 2,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The professor's lectures were anything but ______; even difficult theoretical concepts became engaging through his vivid examples and unexpected humor.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "tedious",
+                    "systematic",
+                    "controversial",
+                    "concise",
+                    "informative"
+                ]
+            }
+        ],
+        answer: [0]
+    },
+
+    {
+        id: 3,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Because the historian regarded sweeping explanations with suspicion, her account of the revolution is deliberately ______, emphasizing local circumstances rather than proposing a single universal cause.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "dogmatic",
+                    "nuanced",
+                    "polemical",
+                    "predictive",
+                    "reductive"
+                ]
+            }
+        ],
+        answer: [1]
+    },
+
+    {
+        id: 4,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The committee's report was initially praised for its (i) ______ analysis, but critics later argued that several of its conclusions rested on (ii) ______ assumptions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "rigorous",
+                    "superficial",
+                    "erratic"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "questionable",
+                    "empirical",
+                    "transparent"
+                ],
+            }
+        ],
+        answer: [0, 0]
+    },
+
+    {
+        id: 5,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Far from being (i) ______, the novelist's style is deliberately restrained; yet this apparent simplicity can be (ii) ______, since beneath the plain language lies a remarkably (iii) ______ network of allusions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "ornate",
+                    "lucid",
+                    "economical"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "deceptive",
+                    "refreshing",
+                    "predictable"
+                ],
+            },
+            {
+                id: 3,
+                choices: [
+                    "intricate",
+                    "limited",
+                    "obvious"
+                ],
+            }
+        ],
+        answer: [0, 0, 0]
+    },
+
+
+    // =========================
+    // SENTENCE EQUIVALENCE
+    // =========================
+
+    {
+        id: 6,
+        type: "sentence-equivalence",
+        difficulty: "easy",
+        question:
+            "The mayor's explanation was so ______ that even her political opponents admitted that they understood precisely why the policy had been adopted.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "lucid",
+            "ambiguous",
+            "transparent",
+            "convoluted",
+            "evasive",
+            "cryptic"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 7,
+        type: "sentence-equivalence",
+        difficulty: "medium",
+        question:
+            "Despite his reputation for arrogance, the celebrated researcher was surprisingly ______ when discussing the limitations of his own work.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "modest",
+            "boastful",
+            "unassuming",
+            "dogmatic",
+            "dismissive",
+            "imperious"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 8,
+        type: "sentence-equivalence",
+        difficulty: "hard",
+        question:
+            "The critic's seemingly complimentary review was actually ______, containing subtle remarks that undermined nearly every aspect of the author's argument.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "laudatory",
+            "caustic",
+            "innocuous",
+            "acerbic",
+            "effusive",
+            "deferential"
+        ],
+        answer: [1, 3]
+    },
+
+
+    // =========================
+    // SHORT READING PASSAGE
+    // =========================
+
+    {
+        id: 9,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        passage:
+            `For many years, economists assumed that improvements in transportation would inevitably reduce regional differences in 
+            prices. Better transportation, after all, allows goods to move more cheaply between markets. Recent studies, however, suggest 
+            a more complicated pattern. Reduced transportation costs may encourage regions to specialize in different industries. Such 
+            specialization can increase differences in wages and land prices even while the prices of traded goods become more uniform.`,
+
+        question:
+            "The passage is primarily concerned with",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "rejecting the claim that transportation affects regional economies",
+            "explaining why transportation improvements may have contrasting effects on regional price differences",
+            "arguing that industrial specialization always increases wages",
+            "describing the historical development of transportation networks",
+            "showing that economists no longer study regional prices"
+        ],
+
+        answer: [1]
+    },
+
+    {
+        id: 10,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        question:
+            "According to the passage, lower transportation costs can contribute to regional differences by",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "preventing goods from moving between regions",
+            "causing economists to ignore land prices",
+            "encouraging regions to specialize economically",
+            "increasing the prices of all traded goods",
+            "reducing differences in wages"
+        ],
+
+        answer: [2]
+    },
+
+
+    // =========================
+    // LONG READING PASSAGE
+    // =========================
+
+    {
+        id: 11,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        passage:
+            `<h4>Long Passage</h4>
+            <p>hello Early studies of urban tree planting emphasized its aesthetic benefits. Trees, researchers argued, improved the visual character of 
+            densely built neighborhoods and therefore contributed indirectly to residents' well-being. More recent research has broadened this view by 
+            examining measurable environmental effects. Urban trees can reduce surface temperatures by providing shade and can absorb some airborne pollutants.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+These qualifications do not imply that urban planting programs are misguided. Rather, they suggest that policymakers should resist treating tree coverage 
+as a universal solution. A program appropriate for a humid city with abundant rainfall may be poorly suited to an arid city facing severe water shortages. 
+The relevant question, therefore, is not simply whether cities should plant more trees, but where, what kind, and under what environmental conditions.</p>`,
+
+        question:
+            "Which of the following best describes the author's main argument?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Urban tree planting should be abandoned in cities with limited water.",
+            "The aesthetic benefits of urban trees are greater than their environmental benefits.",
+            "Urban tree-planting policies should account for local environmental conditions rather than follow a universal approach.",
+            "Researchers have exaggerated the ability of trees to absorb pollutants.",
+            "Cities should prioritize tree planting over other environmental policies."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 12,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "Which TWO of the following statements are supported by the passage?",
+
+        instruction: "Select two answers.",
+
+        maxSelections: 2,
+
+        choices: [
+            "The environmental effects of trees are identical across different climates.",
+            "Earlier research focused substantially on the aesthetic value of urban trees.",
+            "Urban trees eliminate the need for other environmental policies.",
+            "The effectiveness of planting programs can depend on tree species.",
+            "Arid cities should never plant trees."
+        ],
+
+        answer: [1, 3]
+    },
+
+    {
+        id: 13,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "The author's discussion of humid and arid cities serves primarily to",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "demonstrate why environmental policies may need to vary according to local conditions",
+            "prove that humid cities have superior environmental policies",
+            "show that trees require no maintenance in humid environments",
+            "challenge the claim that trees provide shade",
+            "explain why cities have different population densities"
+        ],
+
+        answer: [0]
+    },
+
+
+    // =========================
+    // ARGUMENT / INFERENCE RC
+    // =========================
+
+    {
+        id: 14,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 14,
+
+        passage:
+            `A museum recently extended its opening hours by two hours each evening. Attendance subsequently increased by 15 
+            percent. Museum administrators concluded that the extended hours caused the increase and therefore proposed 
+            remaining open even later. However, during the same period the museum opened a highly publicized exhibition that 
+            attracted visitors from across the region.`,
+
+        question:
+            "Which of the following most seriously weakens the administrators' conclusion?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Some museum employees prefer working during the evening.",
+            "Other museums in the region close earlier.",
+            "The new exhibition may have been responsible for much of the increase in attendance.",
+            "The museum charges the same admission price throughout the day.",
+            "Attendance varies somewhat from day to day."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 15,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 15,
+
+        passage:
+            `Researchers studying scientific collaboration have found that teams composed of specialists from several disciplines 
+            often generate more novel ideas than teams whose members share similar expertise. Yet interdisciplinary teams also take 
+            longer, on average, to complete projects. Researchers suggest that participants must spend considerable time establishing 
+            a common vocabulary and reconciling different methodological assumptions.`,
+
+        question:
+            "Which of the following can most reasonably be inferred from the passage?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Interdisciplinary research is always preferable to research conducted within one discipline.",
+            "Methodological disagreements make interdisciplinary projects unlikely to succeed.",
+            "Some of the benefits of interdisciplinary collaboration may come at the cost of greater coordination demands.",
+            "Researchers from the same discipline never generate novel ideas.",
+            "A common vocabulary eliminates all delays in interdisciplinary projects."
+        ],
+
+        answer: [2]
+    }
+
+];
+
+const quantSection1 = [
+
+    // =========================
+    // TEXT COMPLETION
+    // =========================
+
+    {
+        id: 1,
+        type: "text-completion",
+        difficulty: "easy",
+        question:
+            "Although the scientist was initially skeptical of the new theory, the abundance of supporting evidence eventually made her ______ it.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "reject",
+                    "accept",
+                    "ignore",
+                    "conceal",
+                    "misrepresent"
+                ]
+            }
+        ],
+        answer: [0]
+        
+    },
+
+    {
+        id: 2,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The professor's lectures were anything but ______; even difficult theoretical concepts became engaging through his vivid examples and unexpected humor.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "tedious",
+                    "systematic",
+                    "controversial",
+                    "concise",
+                    "informative"
+                ]
+            }
+        ],
+        answer: [0]
+    },
+
+    {
+        id: 3,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Because the historian regarded sweeping explanations with suspicion, her account of the revolution is deliberately ______, emphasizing local circumstances rather than proposing a single universal cause.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "dogmatic",
+                    "nuanced",
+                    "polemical",
+                    "predictive",
+                    "reductive"
+                ]
+            }
+        ],
+        answer: [1]
+    },
+
+    {
+        id: 4,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The committee's report was initially praised for its (i) ______ analysis, but critics later argued that several of its conclusions rested on (ii) ______ assumptions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "rigorous",
+                    "superficial",
+                    "erratic"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "questionable",
+                    "empirical",
+                    "transparent"
+                ],
+            }
+        ],
+        answer: [0, 0]
+    },
+
+    {
+        id: 5,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Far from being (i) ______, the novelist's style is deliberately restrained; yet this apparent simplicity can be (ii) ______, since beneath the plain language lies a remarkably (iii) ______ network of allusions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "ornate",
+                    "lucid",
+                    "economical"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "deceptive",
+                    "refreshing",
+                    "predictable"
+                ],
+            },
+            {
+                id: 3,
+                choices: [
+                    "intricate",
+                    "limited",
+                    "obvious"
+                ],
+            }
+        ],
+        answer: [0, 0, 0]
+    },
+
+
+    // =========================
+    // SENTENCE EQUIVALENCE
+    // =========================
+
+    {
+        id: 6,
+        type: "sentence-equivalence",
+        difficulty: "easy",
+        question:
+            "The mayor's explanation was so ______ that even her political opponents admitted that they understood precisely why the policy had been adopted.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "lucid",
+            "ambiguous",
+            "transparent",
+            "convoluted",
+            "evasive",
+            "cryptic"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 7,
+        type: "sentence-equivalence",
+        difficulty: "medium",
+        question:
+            "Despite his reputation for arrogance, the celebrated researcher was surprisingly ______ when discussing the limitations of his own work.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "modest",
+            "boastful",
+            "unassuming",
+            "dogmatic",
+            "dismissive",
+            "imperious"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 8,
+        type: "sentence-equivalence",
+        difficulty: "hard",
+        question:
+            "The critic's seemingly complimentary review was actually ______, containing subtle remarks that undermined nearly every aspect of the author's argument.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "laudatory",
+            "caustic",
+            "innocuous",
+            "acerbic",
+            "effusive",
+            "deferential"
+        ],
+        answer: [1, 3]
+    },
+
+
+    // =========================
+    // SHORT READING PASSAGE
+    // =========================
+
+    {
+        id: 9,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        passage:
+            `For many years, economists assumed that improvements in transportation would inevitably reduce regional differences in 
+            prices. Better transportation, after all, allows goods to move more cheaply between markets. Recent studies, however, suggest 
+            a more complicated pattern. Reduced transportation costs may encourage regions to specialize in different industries. Such 
+            specialization can increase differences in wages and land prices even while the prices of traded goods become more uniform.`,
+
+        question:
+            "The passage is primarily concerned with",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "rejecting the claim that transportation affects regional economies",
+            "explaining why transportation improvements may have contrasting effects on regional price differences",
+            "arguing that industrial specialization always increases wages",
+            "describing the historical development of transportation networks",
+            "showing that economists no longer study regional prices"
+        ],
+
+        answer: [1]
+    },
+
+    {
+        id: 10,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        question:
+            "According to the passage, lower transportation costs can contribute to regional differences by",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "preventing goods from moving between regions",
+            "causing economists to ignore land prices",
+            "encouraging regions to specialize economically",
+            "increasing the prices of all traded goods",
+            "reducing differences in wages"
+        ],
+
+        answer: [2]
+    },
+
+
+    // =========================
+    // LONG READING PASSAGE
+    // =========================
+
+    {
+        id: 11,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        passage:
+            `<h4>Long Passage</h4>
+            <p>hello Early studies of urban tree planting emphasized its aesthetic benefits. Trees, researchers argued, improved the visual character of 
+            densely built neighborhoods and therefore contributed indirectly to residents' well-being. More recent research has broadened this view by 
+            examining measurable environmental effects. Urban trees can reduce surface temperatures by providing shade and can absorb some airborne pollutants.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+These qualifications do not imply that urban planting programs are misguided. Rather, they suggest that policymakers should resist treating tree coverage 
+as a universal solution. A program appropriate for a humid city with abundant rainfall may be poorly suited to an arid city facing severe water shortages. 
+The relevant question, therefore, is not simply whether cities should plant more trees, but where, what kind, and under what environmental conditions.</p>`,
+
+        question:
+            "Which of the following best describes the author's main argument?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Urban tree planting should be abandoned in cities with limited water.",
+            "The aesthetic benefits of urban trees are greater than their environmental benefits.",
+            "Urban tree-planting policies should account for local environmental conditions rather than follow a universal approach.",
+            "Researchers have exaggerated the ability of trees to absorb pollutants.",
+            "Cities should prioritize tree planting over other environmental policies."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 12,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "Which TWO of the following statements are supported by the passage?",
+
+        instruction: "Select two answers.",
+
+        maxSelections: 2,
+
+        choices: [
+            "The environmental effects of trees are identical across different climates.",
+            "Earlier research focused substantially on the aesthetic value of urban trees.",
+            "Urban trees eliminate the need for other environmental policies.",
+            "The effectiveness of planting programs can depend on tree species.",
+            "Arid cities should never plant trees."
+        ],
+
+        answer: [1, 3]
+    },
+
+    {
+        id: 13,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "The author's discussion of humid and arid cities serves primarily to",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "demonstrate why environmental policies may need to vary according to local conditions",
+            "prove that humid cities have superior environmental policies",
+            "show that trees require no maintenance in humid environments",
+            "challenge the claim that trees provide shade",
+            "explain why cities have different population densities"
+        ],
+
+        answer: [0]
+    },
+
+
+    // =========================
+    // ARGUMENT / INFERENCE RC
+    // =========================
+
+    {
+        id: 14,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 14,
+
+        passage:
+            `A museum recently extended its opening hours by two hours each evening. Attendance subsequently increased by 15 
+            percent. Museum administrators concluded that the extended hours caused the increase and therefore proposed 
+            remaining open even later. However, during the same period the museum opened a highly publicized exhibition that 
+            attracted visitors from across the region.`,
+
+        question:
+            "Which of the following most seriously weakens the administrators' conclusion?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Some museum employees prefer working during the evening.",
+            "Other museums in the region close earlier.",
+            "The new exhibition may have been responsible for much of the increase in attendance.",
+            "The museum charges the same admission price throughout the day.",
+            "Attendance varies somewhat from day to day."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 15,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 15,
+
+        passage:
+            `Researchers studying scientific collaboration have found that teams composed of specialists from several disciplines 
+            often generate more novel ideas than teams whose members share similar expertise. Yet interdisciplinary teams also take 
+            longer, on average, to complete projects. Researchers suggest that participants must spend considerable time establishing 
+            a common vocabulary and reconciling different methodological assumptions.`,
+
+        question:
+            "Which of the following can most reasonably be inferred from the passage?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Interdisciplinary research is always preferable to research conducted within one discipline.",
+            "Methodological disagreements make interdisciplinary projects unlikely to succeed.",
+            "Some of the benefits of interdisciplinary collaboration may come at the cost of greater coordination demands.",
+            "Researchers from the same discipline never generate novel ideas.",
+            "A common vocabulary eliminates all delays in interdisciplinary projects."
+        ],
+
+        answer: [2]
+    }
+
+];
+
+const quantSection2 = [
+
+    // =========================
+    // TEXT COMPLETION
+    // =========================
+
+    {
+        id: 1,
+        type: "text-completion",
+        difficulty: "easy",
+        question:
+            "Although the scientist was initially skeptical of the new theory, the abundance of supporting evidence eventually made her ______ it.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "reject",
+                    "accept",
+                    "ignore",
+                    "conceal",
+                    "misrepresent"
+                ]
+            }
+        ],
+        answer: [0]
+        
+    },
+
+    {
+        id: 2,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The professor's lectures were anything but ______; even difficult theoretical concepts became engaging through his vivid examples and unexpected humor.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "tedious",
+                    "systematic",
+                    "controversial",
+                    "concise",
+                    "informative"
+                ]
+            }
+        ],
+        answer: [0]
+    },
+
+    {
+        id: 3,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Because the historian regarded sweeping explanations with suspicion, her account of the revolution is deliberately ______, emphasizing local circumstances rather than proposing a single universal cause.",
+        instruction: "Select one answer.",
+        maxSelections: 1,
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "dogmatic",
+                    "nuanced",
+                    "polemical",
+                    "predictive",
+                    "reductive"
+                ]
+            }
+        ],
+        answer: [1]
+    },
+
+    {
+        id: 4,
+        type: "text-completion",
+        difficulty: "medium",
+        question:
+            "The committee's report was initially praised for its (i) ______ analysis, but critics later argued that several of its conclusions rested on (ii) ______ assumptions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "rigorous",
+                    "superficial",
+                    "erratic"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "questionable",
+                    "empirical",
+                    "transparent"
+                ],
+            }
+        ],
+        answer: [0, 0]
+    },
+
+    {
+        id: 5,
+        type: "text-completion",
+        difficulty: "hard",
+        question:
+            "Far from being (i) ______, the novelist's style is deliberately restrained; yet this apparent simplicity can be (ii) ______, since beneath the plain language lies a remarkably (iii) ______ network of allusions.",
+        instruction: "Select one answer for each blank.",
+        blanks: [
+            {
+                id: 1,
+                choices: [
+                    "ornate",
+                    "lucid",
+                    "economical"
+                ],
+            },
+            {
+                id: 2,
+                choices: [
+                    "deceptive",
+                    "refreshing",
+                    "predictable"
+                ],
+            },
+            {
+                id: 3,
+                choices: [
+                    "intricate",
+                    "limited",
+                    "obvious"
+                ],
+            }
+        ],
+        answer: [0, 0, 0]
+    },
+
+
+    // =========================
+    // SENTENCE EQUIVALENCE
+    // =========================
+
+    {
+        id: 6,
+        type: "sentence-equivalence",
+        difficulty: "easy",
+        question:
+            "The mayor's explanation was so ______ that even her political opponents admitted that they understood precisely why the policy had been adopted.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "lucid",
+            "ambiguous",
+            "transparent",
+            "convoluted",
+            "evasive",
+            "cryptic"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 7,
+        type: "sentence-equivalence",
+        difficulty: "medium",
+        question:
+            "Despite his reputation for arrogance, the celebrated researcher was surprisingly ______ when discussing the limitations of his own work.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "modest",
+            "boastful",
+            "unassuming",
+            "dogmatic",
+            "dismissive",
+            "imperious"
+        ],
+        answer: [0, 2]
+    },
+
+    {
+        id: 8,
+        type: "sentence-equivalence",
+        difficulty: "hard",
+        question:
+            "The critic's seemingly complimentary review was actually ______, containing subtle remarks that undermined nearly every aspect of the author's argument.",
+        instruction:
+            "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        maxSelections: 2,
+        choices: [
+            "laudatory",
+            "caustic",
+            "innocuous",
+            "acerbic",
+            "effusive",
+            "deferential"
+        ],
+        answer: [1, 3]
+    },
+
+
+    // =========================
+    // SHORT READING PASSAGE
+    // =========================
+
+    {
+        id: 9,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        passage:
+            `For many years, economists assumed that improvements in transportation would inevitably reduce regional differences in 
+            prices. Better transportation, after all, allows goods to move more cheaply between markets. Recent studies, however, suggest 
+            a more complicated pattern. Reduced transportation costs may encourage regions to specialize in different industries. Such 
+            specialization can increase differences in wages and land prices even while the prices of traded goods become more uniform.`,
+
+        question:
+            "The passage is primarily concerned with",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "rejecting the claim that transportation affects regional economies",
+            "explaining why transportation improvements may have contrasting effects on regional price differences",
+            "arguing that industrial specialization always increases wages",
+            "describing the historical development of transportation networks",
+            "showing that economists no longer study regional prices"
+        ],
+
+        answer: [1]
+    },
+
+    {
+        id: 10,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 9,
+
+        question:
+            "According to the passage, lower transportation costs can contribute to regional differences by",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "preventing goods from moving between regions",
+            "causing economists to ignore land prices",
+            "encouraging regions to specialize economically",
+            "increasing the prices of all traded goods",
+            "reducing differences in wages"
+        ],
+
+        answer: [2]
+    },
+
+
+    // =========================
+    // LONG READING PASSAGE
+    // =========================
+
+    {
+        id: 11,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        passage:
+            `<h4>Long Passage</h4>
+            <p>hello Early studies of urban tree planting emphasized its aesthetic benefits. Trees, researchers argued, improved the visual character of 
+            densely built neighborhoods and therefore contributed indirectly to residents' well-being. More recent research has broadened this view by 
+            examining measurable environmental effects. Urban trees can reduce surface temperatures by providing shade and can absorb some airborne pollutants.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.</p>
+
+<p>Nevertheless, enthusiasm for large-scale planting programs has occasionally exceeded the evidence supporting them. The cooling effects of trees vary 
+substantially according to species, climate, soil conditions, and the spatial arrangement of vegetation. Moreover, trees themselves require water and 
+maintenance, resources that may be scarce in some cities.
+
+These qualifications do not imply that urban planting programs are misguided. Rather, they suggest that policymakers should resist treating tree coverage 
+as a universal solution. A program appropriate for a humid city with abundant rainfall may be poorly suited to an arid city facing severe water shortages. 
+The relevant question, therefore, is not simply whether cities should plant more trees, but where, what kind, and under what environmental conditions.</p>`,
+
+        question:
+            "Which of the following best describes the author's main argument?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Urban tree planting should be abandoned in cities with limited water.",
+            "The aesthetic benefits of urban trees are greater than their environmental benefits.",
+            "Urban tree-planting policies should account for local environmental conditions rather than follow a universal approach.",
+            "Researchers have exaggerated the ability of trees to absorb pollutants.",
+            "Cities should prioritize tree planting over other environmental policies."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 12,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "Which TWO of the following statements are supported by the passage?",
+
+        instruction: "Select two answers.",
+
+        maxSelections: 2,
+
+        choices: [
+            "The environmental effects of trees are identical across different climates.",
+            "Earlier research focused substantially on the aesthetic value of urban trees.",
+            "Urban trees eliminate the need for other environmental policies.",
+            "The effectiveness of planting programs can depend on tree species.",
+            "Arid cities should never plant trees."
+        ],
+
+        answer: [1, 3]
+    },
+
+    {
+        id: 13,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 11,
+
+        question:
+            "The author's discussion of humid and arid cities serves primarily to",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "demonstrate why environmental policies may need to vary according to local conditions",
+            "prove that humid cities have superior environmental policies",
+            "show that trees require no maintenance in humid environments",
+            "challenge the claim that trees provide shade",
+            "explain why cities have different population densities"
+        ],
+
+        answer: [0]
+    },
+
+
+    // =========================
+    // ARGUMENT / INFERENCE RC
+    // =========================
+
+    {
+        id: 14,
+        type: "reading-single",
+        difficulty: "medium",
+        passageRef: 14,
+
+        passage:
+            `A museum recently extended its opening hours by two hours each evening. Attendance subsequently increased by 15 
+            percent. Museum administrators concluded that the extended hours caused the increase and therefore proposed 
+            remaining open even later. However, during the same period the museum opened a highly publicized exhibition that 
+            attracted visitors from across the region.`,
+
+        question:
+            "Which of the following most seriously weakens the administrators' conclusion?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Some museum employees prefer working during the evening.",
+            "Other museums in the region close earlier.",
+            "The new exhibition may have been responsible for much of the increase in attendance.",
+            "The museum charges the same admission price throughout the day.",
+            "Attendance varies somewhat from day to day."
+        ],
+
+        answer: [2]
+    },
+
+    {
+        id: 15,
+        type: "reading-single",
+        difficulty: "hard",
+        passageRef: 15,
+
+        passage:
+            `Researchers studying scientific collaboration have found that teams composed of specialists from several disciplines 
+            often generate more novel ideas than teams whose members share similar expertise. Yet interdisciplinary teams also take 
+            longer, on average, to complete projects. Researchers suggest that participants must spend considerable time establishing 
+            a common vocabulary and reconciling different methodological assumptions.`,
+
+        question:
+            "Which of the following can most reasonably be inferred from the passage?",
+
+        instruction: "Select one answer.",
+
+        maxSelections: 1,
+
+        choices: [
+            "Interdisciplinary research is always preferable to research conducted within one discipline.",
+            "Methodological disagreements make interdisciplinary projects unlikely to succeed.",
+            "Some of the benefits of interdisciplinary collaboration may come at the cost of greater coordination demands.",
+            "Researchers from the same discipline never generate novel ideas.",
+            "A common vocabulary eliminates all delays in interdisciplinary projects."
+        ],
+
+        answer: [2]
+    }
+
+];

@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: white;
+}
+
+#start-section{
+    height: 50px;
+    width: 130px;
+    background-color: aquamarine;
+    border: 1px solid;
+    margin: 100px 250px;
+}
+
+#start-section:hover{
+    background-color: blanchedalmond;
+}
+
+/* START OF THE HEADER */
+
+.nav-bar{
+    display: flex;
+    height: 50px;
+    padding: 10px;
+    margin: 0px;
+    background-color: black;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.test-title{
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+/*START REVIEW NAVIGATION BAR*/
+
+.review-nav-bar{
+    display: flex;
+    height: 50px;
+    padding: 10px;
+    margin: 0px;
+    background-color: black;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/*REVIEW NAVIGATION BAR END*/
+
+.button-bar{
+    background-color: rgb(186, 190, 190);
+    height: 40px;
+    width: 70px;
+    padding: 0 2px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 1px;
+    
+}
+
+      /* START OF THE TIME BAR */
+
+.time-area{
+    display: flex;
+    background-color: black;
+    height: 35px;
+    padding: 0 10px;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
+.button-hide{
+    background-color: rgb(186, 190, 190);
+    height: 30px;
+    padding: 0 5px;
+    font-family: 'Courier New', Courier, monospace;
+
+    
+}
+
+.time{
+    color: aliceblue;
+    font-size: medium;
+}
+
+     /* END OF THE TIME BAR */
+
+
+#question-number{
+    color: aliceblue;
+    position: absolute;
+    margin-right: 50%;
+}
+
+/* Remaining time hide/show classList porp*/
+
+.time-hide{
+    color: black;
+}
+
+/* MARK BUTTON BG COLOR ACTIVE STATUS */
+
+.mark-active{
+    background-color: yellow;
+}
+
+
+/*   HIDDEN CLASSLIST TO HIDE HTML ELEMENT */
+
+.hidden{
+    display: none;
+}
+
+/* REVIEW WINDOW DISPLAY */
+
+#modal{
+    padding: 2%;
+}
+
+#review-table{
+    width: 50%;
+    border-collapse: collapse;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+#review-table th{
+    border: 1px solid;
+    padding: 8px 12px;
+    text-align: left;
+    
+}
+
+#review-table td{
+    border: 1px solid;
+    padding: 8px 12px;
+    text-align: left;
+}
+#review-table tr:hover{
+    background-color: blanchedalmond;
+}
+
+.review-bttn-close{
+    margin-top: 5px;
+    margin-left: 20%;
+    background-color: white;
+    height: 25px;
+    width: 50px;
+    padding: 0 2px;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid;
+}
+
+.review-bttn-close:hover{
+    background-color: blanchedalmond;
+}
+
+/*    END OF THE HEADER    */
+
+
+/*          MAIN PROMPT                */
+
+#main-prompt{
+    background-color: white;
+}
+.question-area{
+    display: flex;
+    gap: 30px;
+    height: calc(100vh - 125px);
+    overflow: hidden;
+}
+ 
+.question-container{
+    min-width: 0;
+}
+
+.passage-container{
+    flex: 6;
+    height: 100%;
+    padding: 10px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+#passage{
+    height: 100%;
+    overflow-y: auto;
+
+    line-height: 1.5;
+    font-size: 20px;
+    padding: 15px;   
+}
+
+
+.tc-table{
+    display: inline;
+    border-collapse: collapse;
+    padding: 1.5%;
+}
+
+.tc-table td{
+    font-size: 20px;
+    border: 1px solid;
+    padding: 8px 10px;
+    text-align: left;
+}
+
+.tc-table td:hover{
+    background-color: blanchedalmond;
+}
+
+#instruction{
+    display: flex;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid;
+    margin: 2px 2px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#question{
+    display: flex;
+    font-size: 20px;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#choices{
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 10px;
+}

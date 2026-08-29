@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRE-Practice-Test</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="questions.js"></script>
+    <script src="choiceRendering.js"></script>
+    <script src="testRendering.js"></script>
+    
+</head>
+
+<body>
+    <header>
+        <div id="test-header">
+            <div id="section-header">
+
+                <div id="nav" class="nav-bar">
+                    <h1 class="test-title">GRE Practice Test</h1>
+
+                    <span></span>
+                    <button id="quit" class="button-bar">Quit</button>
+                    <button id="end-section" class="button-bar">End Sec.</button>
+                    <button id="mark" class="button-bar">Mark</button>
+                    <button id="review" class="button-bar">Review</button>
+                    <button id="previous" class="button-bar">Prev</button>
+                    <button id="next" class="button-bar">Next</button>
+                </div>           
+
+                <div id="review-nav" class="review-nav-bar hidden">
+                    <h1 class="test-title">GRE Practice Test</h1>
+
+                    <button id="quit-r" class="button-bar">Quit</button>
+                    <button id="end-section-r" class="button-bar">End Sec.</button>
+                    <button id="go-question" class="button-bar">Go to Question</button>
+                </div>
+
+                <div class="time-area">
+                    <p id="question-number"></p>
+                    <button id="hide" class="button-hide">Hide</button>
+                    <p class="time">
+                    <span>Time Remaining</span>
+                    <span id="timer"></span> 
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div id="test-prompt">
+
+        <button id="start-section">START TEST</button>
+
+        <div id="section-prompt">
+
+            <div id="main-prompt">
+
+                <div class="question-area">
+
+                    <div id="passage" class="passage-container">
+                    </div>
+                    
+                    <div id="question-box" class="question-container">
+                    <p id="instruction"></p>
+                    <p id="question"></p>
+                    <p id="choices"></p>
+                    </div>
+        
+                </div>
+
+            </div>
+
+            <div id="modal" class="hidden">
+                <p>Review List</p>
+                <br>
+                <table id="review-table">
+                    <thead>
+                        <tr>
+                            <th>Question No</th>
+                            <th>Status</th>
+                            <th>Marked</th> 
+                        </tr>
+                    </thead>
+                    <tbody id="review-table-body">
+                    </tbody>
+                </table>
+                <button id="close-Review" class="review-bttn-close">Close</button>
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>
