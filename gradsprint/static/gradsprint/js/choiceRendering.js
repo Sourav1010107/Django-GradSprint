@@ -185,9 +185,17 @@ function renderReadingPassage(){
 
     // loading reference passage
 
-    const loadingquestionNo = questions[currentQuestion].passageRef-1;
+    //const loadingquestionNo = questions[currentQuestion].passageRef-1;
 
-    containerPassage.innerHTML = questions[loadingquestionNo].passage;
+    const passageRef = questions[currentQuestion].passageRef;
+
+    const passageQuestion = questions.find(
+        question=> question.id === passageRef
+    );
+
+    if (passageQuestion) {
+        containerPassage.innerHTML = passageQuestion.passage;
+    }
 
 }
 

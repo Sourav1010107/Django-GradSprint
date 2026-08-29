@@ -433,5 +433,5 @@ function finishTest() {
 //-----------------------------------
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    loadTest(1);
+    loadTest(2);
 });

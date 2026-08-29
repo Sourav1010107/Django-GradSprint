@@ -44,7 +44,7 @@ class Question(models.Model):
     question = models.TextField()
     instruction = models.TextField()
     passage = models.TextField(blank=True, null=True)
-    passage_ref = models.ForeignKey("self", on_delete=models.SET_NULL, blank=True, null=True, related_name="passage_questions")
+    passage_ref = models.ForeignKey("self", on_delete=models.SET_NULL, blank=True, null=True, related_name="linked_questions")
     max_selections = models.IntegerField(default=1, blank=True, null=True)
     order = models.IntegerField()
 

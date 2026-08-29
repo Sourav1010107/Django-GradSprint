@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'greProject.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "GradSprint_db",
+        "NAME": "gradsprint_db",
         "USER": "gradsprint_user",
         "PASSWORD": "12340",
         "HOST": "localhost",

@@ -32,13 +32,31 @@ def test_data(request, test_id):
                 "question": question.question,
                 "instruction": question.instruction,
                 "passage": question.passage,
+
                 "passageRef": (
                     question.passage_ref_id
                     if question.passage_ref
                     else None
                 ),
-                
+
+                "maxSelections": question.max_selections,
+
+                "choices": [
+                    choice.text
+                    for choice in question.choices.order_by("order")
+                ],
+
+                "blanks": []
             }
+
+            for blank in question.blanks.order_by("order"):
+                question_data["blanks"].append({
+                    "id": blank.order,
+                    "choices": [
+                        choice.text 
+                        for choice in blank.choices.order_by("order")
+                    ]
+                })
 
             questions_data.append(question_data)
 

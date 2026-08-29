@@ -268,48 +268,33 @@ class Command(BaseCommand):
 
         for item in questions_data:
 
-            passage_ref_id = item.get(
-                "passageRef"
-            )
+            current_question = question_map[item["id"]]
 
 
-            if passage_ref_id is None:
+            # Question contains its own passage
+            if item.get("passage"):
 
-                continue
-
-
-            current_question = question_map[
-                item["id"]
-            ]
-
-
-            referenced_question = question_map.get(
-                passage_ref_id
-            )
-
-
-            if referenced_question:
-
-                current_question.passage_ref = (
-                    referenced_question
-                )
+                current_question.passage_ref = current_question
 
                 current_question.save(
-                    update_fields=[
-                        "passage_ref"
-                    ]
+                    update_fields=["passage_ref"]
                 )
 
-            else:
 
-                self.stdout.write(
-                    self.style.WARNING(
-                        f"Passage reference "
-                        f"{passage_ref_id} not found "
-                        f"for question {item['id']}"
+            # Question uses another question's passage
+            elif item.get("passageRef") is not None:
+
+                source_question = question_map.get(
+                    item["passageRef"]
+                )
+
+                if source_question:
+
+                    current_question.passage_ref = source_question
+
+                    current_question.save(
+                        update_fields=["passage_ref"]
                     )
-                )
-
 
         # -------------------------
         # FINISHED
