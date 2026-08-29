@@ -1,13 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRE-Practice-Test</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="questions.js"></script>
-    <script src="choiceRendering.js"></script>
-    <script src="testRendering.js"></script>
+    <link rel="stylesheet" href="{% static 'gradsprint/css/style.css'%}">
+    <script src= "{% static 'gradsprint/js/questions.js'%}"></script>
+    <script src="{% static 'gradsprint/js/choiceRendering.js'%}"></script>
+    <script src="{% static 'gradsprint/js/testRendering.js'%}"></script>
     
 </head>
 

@@ -1,10 +1,13 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 
 
 from .models import Test
 
 # Create your views here.
+
+def test_engine(request):
+    return render(request, "gradsprint/test_engine.html")
 
 
 def test_data(request, test_id):
