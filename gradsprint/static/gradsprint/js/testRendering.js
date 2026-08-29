@@ -1,7 +1,7 @@
 //------------------------------------
 //    VARIABLE INITIALIZATION
 //------------------------------------
-
+let greTest = null;
 let currentSection = 0;
 let currentQuestion = 0;
 let timerVisible = true;
@@ -16,40 +16,30 @@ let markStatus;
 //------------------------------------
 
 
-const greTest = {
+async function loadTest(testId) {
 
-    testName: "GRE Practice Test 1",
+    try {
 
-    sections: [
+        const response = await fetch(`/api/test/${testId}/`);
 
-        {
-            name: "Verbal Reasoning 1",
-            time: 1080,
-            set_name: verbalSection1
-        },
-
-        {
-            name: "Quantitative Reasoning 1",
-            time: 1260,
-            set_name: quantSection1
-        },
-
-        {
-            name: "Verbal Reasoning 2",
-            time: 1380,
-            set_name: verbalSection2
-        },
-
-        {
-            name: "Quantitative Reasoning 2",
-            time: 1560,
-            set_name: quantSection2
+        if (!response.ok) {
+            throw new Error("Could not load test");
         }
 
-    ]
+        greTest = await response.json();
 
-};
+        console.log("Test loaded:", greTest);
 
+        renderTest();
+
+    }
+
+    catch (error) {
+
+        console.error("Error loading test:", error);
+
+    }
+}
 //--------------------------
 //    NEXT QUESTION  
 //--------------------------
@@ -108,6 +98,7 @@ function timerUpdate() {
         return;
     }
 }
+
 
 //------------------------------
 //      TIME TOGGLE
@@ -296,6 +287,11 @@ function renderTest() {
 
 function renderSection() {
 
+    if(!greTest){
+        console.error("Test data has not loaded yet");
+        return;
+    }
+
     // Activate section-header and section-prompt
     const sectionHeader = document.querySelector('#section-header');
     const sectionPrompt = document.querySelector('#section-prompt');
@@ -437,5 +433,5 @@ function finishTest() {
 //-----------------------------------
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    renderTest();
+    loadTest(1);
 });

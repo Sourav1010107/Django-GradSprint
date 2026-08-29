@@ -21,10 +21,13 @@ class Section(models.Model):
 
 
 class Question(models.Model):
-    QUESTION_TYPES = [
+    TYPE_CHOICES = [
         ("text-completion", "Text Completion"),
+        ("text-completion-double", "Text Completion Double"),
+        ("text-completion-triple", "Text Completion Triple"),
         ("sentence-equivalence", "Sentence Equivalence"),
         ("reading-single", "Reading Single"),
+        ("reading-multiple", "Reading Multiple"),
     ]
     DIFFICULTIES = [
         ("easy", "Easy"),
@@ -35,13 +38,14 @@ class Question(models.Model):
 
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name="questions")
 
-    question_types = models.CharField(max_length=50, choices=QUESTION_TYPES)
+    question_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     difficulty = models.CharField(max_length=50, choices=DIFFICULTIES)
 
     question = models.TextField()
     instruction = models.TextField()
     passage = models.TextField(blank=True, null=True)
-    passage_ref = models.ForeignKey("self", on_delete=models.CASCADE, related_name="passage_questions")
+    passage_ref = models.ForeignKey("self", on_delete=models.SET_NULL, blank=True, null=True, related_name="passage_questions")
+    max_selections = models.IntegerField(default=1, blank=True, null=True)
     order = models.IntegerField()
 
     def __str__(self):
