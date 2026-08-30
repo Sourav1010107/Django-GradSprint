@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Successful</title>
+</head>
+
+<body>
+    <h1>Payment Successful</h1>
+
+    {% if payment %}
+
+        <p>
+            Amount:
+            ৳{{ payment.amount }}
+        </p>
+
+        <p>
+            Invoice:
+            {{ payment.invoice_number }}
+        </p>
+
+        <p>
+            Transaction ID:
+            {{ payment.trx_id }}
+        </p>
+
+    {% endif %}
+
+    <a href="/">
+        Continue
+    </a>
+
+</body>
+
+</html>

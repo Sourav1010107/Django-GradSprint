@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Checkout</title>
+</head>
+
+<body>
+    <h1>GRE Practice Test</h1>
+
+    <h2>৳999</h2>
+
+    <p>
+        Complete payment through bKash
+        to activate your test.
+    </p>
+
+    <form
+        method="POST"
+        action="{% url 'bkash_create' %}"
+    >
+        {% csrf_token %}
+
+        <button type="submit">
+
+            Pay ৳999 with bKash
+        </button>
+
+    </form>
+</body>
+</html>

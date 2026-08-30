@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(BASE_DIR/".env")
 
 
 # Quick-start development settings - unsuitable for production
@@ -121,3 +125,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+BKASH_USERNAME = os.getenv("BKASH_USERNAME")
+BKASH_PASSWORD = os.getenv("BKASH_PASSWORD")
+BKASH_APP_KEY = os.getenv("BKASH_APP_KEY")
+BKASH_APP_SECRET = os.getenv("BKASH_APP_SECRET")
+
+BKASH_BASE_URL = os.getenv(
+    "BKASH_BASE_URL",
+    "https://tokenized.sandbox.bka.sh/v1.2.0-beta"
+)
+
+BKASH_CALLBACK_URL = os.getenv("BKASH_CALLBACK_URL")
