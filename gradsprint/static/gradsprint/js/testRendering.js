@@ -30,8 +30,9 @@ async function loadTest(testId) {
     }
 
     catch (error) {
-
+        
         console.error("Error loading test:", error);
+
     }
 }
 //--------------------------
