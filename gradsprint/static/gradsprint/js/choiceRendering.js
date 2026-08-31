@@ -16,9 +16,8 @@ function renderChoices(){
         renderReadingPassage();
     }
     else{
-        renderSentenceEquivalence();
+        renderQuantChoices();
     }
-
 }
 
 
@@ -185,19 +184,172 @@ function renderReadingPassage(){
 
     // loading reference passage
 
-    //const loadingquestionNo = questions[currentQuestion].passageRef-1;
+    const loadingquestionNo = questions[currentQuestion].passageRef-1;
 
-    const passageRef = questions[currentQuestion].passageRef;
-
-    const passageQuestion = questions.find(
-        question=> question.id === passageRef
-    );
-
-    if (passageQuestion) {
-        containerPassage.innerHTML = passageQuestion.passage;
-    }
+    containerPassage.innerHTML = questions[loadingquestionNo].passage;
 
 }
 
+//--------------------------------------
+//        QUANTATIVE QUESTION
+//--------------------------------------
 
+
+function renderQuantChoices() {
+
+    let container = document.querySelector('#choices');
+    let containerPassage = document.querySelector('#passage');
+    let containerImage = document.querySelector('#image');
+
+
+    container.innerHTML= "";
+    containerPassage.innerHTML = "";
+    containerImage.innerHTML = "";
+
+
+    // --------------------------------
+    // SINGLE ANSWER
+    // --------------------------------
+
+    if (questions[currentQuestion].type === "single") {
+
+        questions[currentQuestion].choices.forEach((choice)=>{
+
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            const linebreak = document.createElement('br');
+
+            radio.type = "radio";
+            radio.name = "comparison";
+            radio.value = choice;
+
+            label.append(radio);
+            label.append(' '+ choice);
+
+            // reload answer
+
+            if (answers[currentQuestion] === choice) {
+                radio.checked = true;
+            }
+
+            container.append(label);
+            container.append(linebreak);
+
+            // save answer
+
+            radio.addEventListener("click", ()=>{
+                radio.checked = true;
+                answers[currentQuestion] = choice; // save answer
+            });
+        
+        });
+    }
+
+
+    // --------------------------------
+    // MULTIPLE ANSWERS
+    // --------------------------------
+
+    else if (questions[currentQuestion].type === "multiple") {
+
+        questions[currentQuestion].choices.forEach((choice)=>{
+            const checkbox = document.createElement('input');
+            const label = document.createElement('label');
+            const linebreak = document.createElement('br');
+
+            checkbox.type= "checkbox";
+            checkbox.value= choice;
+
+            //creating the checkbox element prop.
+            label.append(checkbox);
+            label.append(' '+ choice);
+
+            //add choices in the HTML element
+            container.append(label);
+            container.append(linebreak);
+
+            //loading the saved answers in the question paper
+            checkbox.checked = answers[currentQuestion].includes(choice);
+
+            //save the choice in the answer array
+            checkbox.addEventListener("change", ()=>{
+
+                if (checkbox.checked) {
+                    if (!answers[currentQuestion].includes(choice)) {
+                        answers[currentQuestion].push(choice);
+                    }
+                }
+                else{
+                    answers[currentQuestion] = answers[currentQuestion].filter(
+                        savedChoice => savedChoice != choice
+                    );
+                }              
+            });
     
+            
+        });
+    }
+
+
+    // --------------------------------
+    // NUMERIC ENTRY
+    // --------------------------------
+
+    else if (questions[currentQuestion].type === "numeric") {
+
+        const input = document.createElement("input");
+
+        input.type = "text";
+        input.className = "numeric-input";
+        input.placeholder = " Enter Answer";
+        input.style.width = "110px";
+        input.style.height = "30px";
+
+        //load answer
+        input.value = answers[currentQuestion];
+
+        container.append(input);
+
+        //save answer
+        input.addEventListener("input", ()=>{
+            answers[currentQuestion] = input.value;
+        });
+    }
+
+
+    // --------------------------------
+    // QUANTITATIVE COMPARISON
+    // --------------------------------
+
+    else if (questions[currentQuestion].type === "comparison") {
+
+        questions[currentQuestion].choices.forEach((choice)=>{
+
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            const linebreak = document.createElement('br');
+
+            radio.type = "radio";
+            radio.name = "comparison";
+            radio.value = choice;
+
+            label.append(radio);
+            label.append(' '+ choice);
+
+            // reload answer
+            if (answers[currentQuestion] === choice) {
+                radio.checked = true;
+            }
+
+            container.append(label);
+            container.append(linebreak);
+
+            // save answer
+            radio.addEventListener("click", ()=>{
+                radio.checked = true;
+                answers[currentQuestion] = choice; // save answer
+            });
+        
+        });
+    }
+}

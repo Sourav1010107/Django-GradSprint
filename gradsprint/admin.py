@@ -12,3 +12,4 @@ admin.site.register(Question)
 admin.site.register(Choice)
 admin.site.register(Blank)
 admin.site.register(BlankChoice)
+

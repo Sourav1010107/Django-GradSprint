@@ -40,7 +40,7 @@ class Question(models.Model):
 
     question_type = models.CharField(max_length=50, choices=TYPE_CHOICES)
     difficulty = models.CharField(max_length=50, choices=DIFFICULTIES)
-
+    image = models.ImageField(upload_to="question_images/", blank=True, null=True)
     question = models.TextField()
     instruction = models.TextField()
     passage = models.TextField(blank=True, null=True)

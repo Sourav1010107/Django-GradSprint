@@ -126,6 +126,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR/"media"
+
 BKASH_USERNAME = os.getenv("BKASH_USERNAME")
 BKASH_PASSWORD = os.getenv("BKASH_PASSWORD")
 BKASH_APP_KEY = os.getenv("BKASH_APP_KEY")

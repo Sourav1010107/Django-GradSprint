@@ -19,25 +19,19 @@ let markStatus;
 async function loadTest(testId) {
 
     try {
-
         const response = await fetch(`/api/test/${testId}/`);
-
         if (!response.ok) {
             throw new Error("Could not load test");
         }
 
         greTest = await response.json();
-
         console.log("Test loaded:", greTest);
-
         renderTest();
-
     }
 
     catch (error) {
 
         console.error("Error loading test:", error);
-
     }
 }
 //--------------------------
