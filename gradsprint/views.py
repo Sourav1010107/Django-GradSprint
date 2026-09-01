@@ -30,6 +30,8 @@ def test_data(request, test_id):
                 "type": question.question_type,
                 "difficulty": question.difficulty,
                 "question": question.question,
+                "quantityA": question.quantityA,
+                "quantityB": question.quantityB,
                 "instruction": question.instruction,
                 "passage": question.passage,
 

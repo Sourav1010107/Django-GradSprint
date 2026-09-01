@@ -22,9 +22,12 @@ class Section(models.Model):
 
 class Question(models.Model):
     TYPE_CHOICES = [
+        ("quantitative-comparison", "Quantitative Comparison"),
+        ("quant-single", "Quant Single"),
+        ("quant-multiple", "Quant Multiple"),
+        ("numeric-entry", "Numeric Entry"),
+        ("data-interpretation-single", "Data Interpretation Single"),
         ("text-completion", "Text Completion"),
-        ("text-completion-double", "Text Completion Double"),
-        ("text-completion-triple", "Text Completion Triple"),
         ("sentence-equivalence", "Sentence Equivalence"),
         ("reading-single", "Reading Single"),
         ("reading-multiple", "Reading Multiple"),
@@ -42,6 +45,8 @@ class Question(models.Model):
     difficulty = models.CharField(max_length=50, choices=DIFFICULTIES)
     image = models.ImageField(upload_to="question_images/", blank=True, null=True)
     question = models.TextField()
+    quantityA = models.TextField(null=True, blank=True)
+    quantityB = models.TextField(null=True, blank=True)
     instruction = models.TextField()
     passage = models.TextField(blank=True, null=True)
     passage_ref = models.ForeignKey("self", on_delete=models.SET_NULL, blank=True, null=True, related_name="linked_questions")

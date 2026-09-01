@@ -16,10 +16,10 @@ function renderChoices(){
         renderReadingPassage();
     }
     else{
-        renderSentenceEquivalence();
+        renderQuantChoices();
     }
-
 }
+
 
 
 //----------------------------------
@@ -198,6 +198,217 @@ function renderReadingPassage(){
     }
 
 }
+
+
+//--------------------------------------
+//        QUANTATIVE QUESTION
+//--------------------------------------
+
+
+function renderQuantChoices() {
+
+    let container = document.querySelector('#choices');
+    let containerPassage = document.querySelector('#passage');
+    let containerImage = document.querySelector('#image');
+
+
+    container.innerHTML= "";
+    containerPassage.innerHTML = "";
+    containerImage.innerHTML = "";
+
+
+    // --------------------------------
+    // SINGLE ANSWER
+    // --------------------------------
+
+    if (questions[currentQuestion].type === "quant-single") {
+
+        questions[currentQuestion].choices.forEach((choice)=>{
+
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            const linebreak = document.createElement('br');
+
+            radio.type = "radio";
+            radio.name = "comparison";
+            radio.value = choice;
+
+            label.append(radio);
+            label.append(' '+ choice);
+
+            // reload answer
+
+            if (answers[currentQuestion] === choice) {
+                radio.checked = true;
+            }
+
+            container.append(label);
+            container.append(linebreak);
+
+            // save answer
+
+            radio.addEventListener("click", ()=>{
+                radio.checked = true;
+                answers[currentQuestion] = choice; // save answer
+            });
+        
+        });
+    }
+
+
+    
+     if (questions[currentQuestion].type === "data-interpretation-single") {
+
+        questions[currentQuestion].choices.forEach((choice)=>{
+
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            const linebreak = document.createElement('br');
+
+            radio.type = "radio";
+            radio.name = "comparison";
+            radio.value = choice;
+
+            label.append(radio);
+            label.append(' '+ choice);
+
+            // reload answer
+
+            if (answers[currentQuestion] === choice) {
+                radio.checked = true;
+            }
+
+            container.append(label);
+            container.append(linebreak);
+
+            // save answer
+
+            radio.addEventListener("click", ()=>{
+                radio.checked = true;
+                answers[currentQuestion] = choice; // save answer
+            });
+        
+        });
+    }
+
+
+    // --------------------------------
+    // MULTIPLE ANSWERS
+    // --------------------------------
+
+    else if (questions[currentQuestion].type === "quant-multiple") {
+
+        questions[currentQuestion].choices.forEach((choice)=>{
+            const checkbox = document.createElement('input');
+            const label = document.createElement('label');
+            const linebreak = document.createElement('br');
+
+            checkbox.type= "checkbox";
+            checkbox.value= choice;
+
+            //creating the checkbox element prop.
+            label.append(checkbox);
+            label.append(' '+ choice);
+
+            //add choices in the HTML element
+            container.append(label);
+            container.append(linebreak);
+
+            //loading the saved answers in the question paper
+            checkbox.checked = answers[currentQuestion].includes(choice);
+
+            //save the choice in the answer array
+            checkbox.addEventListener("change", ()=>{
+
+                if (checkbox.checked) {
+                    if (!answers[currentQuestion].includes(choice)) {
+                        answers[currentQuestion].push(choice);
+                    }
+                }
+                else{
+                    answers[currentQuestion] = answers[currentQuestion].filter(
+                        savedChoice => savedChoice != choice
+                    );
+                }              
+            });
+    
+            
+        });
+    }
+
+
+    // --------------------------------
+    // NUMERIC ENTRY
+    // --------------------------------
+
+    else if (questions[currentQuestion].type === "numeric-entry") {
+
+        const input = document.createElement("input");
+
+        input.type = "text";
+        input.className = "numeric-input";
+        input.placeholder = " Enter Answer";
+        input.style.width = "110px";
+        input.style.height = "30px";
+
+        //load answer
+        input.value = answers[currentQuestion];
+
+        container.append(input);
+
+        //save answer
+        input.addEventListener("input", ()=>{
+            answers[currentQuestion] = input.value;
+        });
+    }
+
+
+    // --------------------------------
+    // QUANTITATIVE COMPARISON
+    // --------------------------------
+
+    else if (questions[currentQuestion].type === "quantitative-comparison") {
+
+        const quantA = document.querySelector('#quantity-a');
+        const quantB = document.querySelector('#quantity-b');
+
+        quantA.innerHTML = "";
+        quantB.innerHTML = "";
+
+        quantA.innerHTML = questions[currentQuestion].quantityA;
+        quantB.innerHTML = questions[currentQuestion].quantityB;
+
+        questions[currentQuestion].choices.forEach((choice)=>{
+
+            const label = document.createElement('label');
+            const radio = document.createElement('input');
+            const linebreak = document.createElement('br');
+
+            radio.type = "radio";
+            radio.name = "comparison";
+            radio.value = choice;
+
+            label.append(radio);
+            label.append(' '+ choice);
+
+            // reload answer
+            if (answers[currentQuestion] === choice) {
+                radio.checked = true;
+            }
+
+            container.append(label);
+            container.append(linebreak);
+
+            // save answer
+            radio.addEventListener("click", ()=>{
+                radio.checked = true;
+                answers[currentQuestion] = choice; // save answer
+            });
+        
+        });
+    }
+}
+
 
 
     

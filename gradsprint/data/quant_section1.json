@@ -1,0 +1,356 @@
+{ 
+    "section": { 
+    "name": "Quantitative Reasoning 1", 
+    "time": 1260, 
+    "order": 3,
+    "questions": [
+        {
+    "id": 1,
+    "type": "quantitative-comparison",
+    "difficulty": "easy",
+
+    "question": "x is a positive number and x² = 49.",
+
+    "quantityA": "x",
+    "quantityB": "7",
+
+    "instruction": "Compare Quantity A and Quantity B.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "Quantity A is greater.",
+      "Quantity B is greater.",
+      "The two quantities are equal.",
+      "The relationship cannot be determined from the information given."
+    ],
+
+    "answer": [2],
+
+    "image": null
+  },
+
+  {
+    "id": 2,
+    "type": "quantitative-comparison",
+    "difficulty": "medium",
+
+    "question": "x is a real number and x² = 16.",
+
+    "quantityA": "x",
+    "quantityB": "4",
+
+    "instruction": "Compare Quantity A and Quantity B.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "Quantity A is greater.",
+      "Quantity B is greater.",
+      "The two quantities are equal.",
+      "The relationship cannot be determined from the information given."
+    ],
+
+    "answer": [3],
+
+    "image": null
+  },
+
+  {
+    "id": 3,
+    "type": "quant-single",
+    "difficulty": "easy",
+
+    "question": "If 3x + 5 = 20, what is the value of x?",
+
+    "instruction": "Select one answer.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+
+    "answer": [2],
+
+    "image": null
+  },
+
+  {
+    "id": 4,
+    "type": "quant-single",
+    "difficulty": "medium",
+
+    "question": "A store reduces the price of an item from $80 to $68. By what percent was the original price reduced?",
+
+    "instruction": "Select one answer.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "10%",
+      "12%",
+      "15%",
+      "18%",
+      "20%"
+    ],
+
+    "answer": [2],
+
+    "image": null
+  },
+
+  {
+    "id": 5,
+    "type": "quant-multiple",
+    "difficulty": "medium",
+
+    "question": "Which of the following numbers are factors of 36?",
+
+    "instruction": "Select all that apply.",
+
+    "maxSelections": 4,
+
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "9",
+      "12"
+    ],
+
+    "answer": [0, 1, 3, 4],
+
+    "image": null
+  },
+
+  {
+    "id": 6,
+    "type": "numeric-entry",
+    "difficulty": "easy",
+
+    "question": "If 5x = 45, enter the value of x.",
+
+    "instruction": "Enter your answer as an integer or decimal.",
+
+    "maxSelections": 1,
+
+    "choices": [],
+
+    "numericAnswer": "9",
+
+    "image": null
+  },
+
+  {
+    "id": 7,
+    "type": "numeric-entry",
+    "difficulty": "medium",
+
+    "question": "A rectangle has length 12 and width 7. What is its area?",
+
+    "instruction": "Enter your answer.",
+
+    "maxSelections": 1,
+
+    "choices": [],
+
+    "numericAnswer": "84",
+
+    "image": null
+  },
+
+  {
+    "id": 8,
+    "type": "quant-single",
+    "difficulty": "medium",
+
+    "question": "In the triangle shown, two angles measure 45° and 65°. What is the measure of angle x?",
+
+    "instruction": "Select one answer.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "60°",
+      "65°",
+      "70°",
+      "75°",
+      "80°"
+    ],
+
+    "answer": [2],
+
+    "image": "quant/section1/q8_triangle.png"
+  },
+
+  {
+    "id": 9,
+    "type": "quantitative-comparison",
+    "difficulty": "hard",
+
+    "question": "The figure shows a square with side length 8 and a circle inscribed inside the square.",
+
+    "quantityA": "Area of the square",
+    "quantityB": "Twice the area of the circle",
+
+    "instruction": "Compare Quantity A and Quantity B.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "Quantity A is greater.",
+      "Quantity B is greater.",
+      "The two quantities are equal.",
+      "The relationship cannot be determined from the information given."
+    ],
+
+    "answer": [1],
+
+    "image": "quant/section1/q9_square_circle.png"
+  },
+
+  {
+    "id": 10,
+    "type": "quant-single",
+    "difficulty": "hard",
+
+    "question": "If f(x) = x² - 3x + 2, what is f(5)?",
+
+    "instruction": "Select one answer.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "8",
+      "10",
+      "12",
+      "14",
+      "16"
+    ],
+    "answer": [2],
+
+    "image": null
+  },
+
+  {
+    "id": 11,
+    "type": "data-interpretation-single",
+    "difficulty": "medium",
+
+    "question": "According to the graph, in which year was Company A's revenue greatest?",
+
+    "instruction": "Select one answer.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+
+    "answer": [4],
+
+    "image": "quant/section1/q11_revenue_graph.png"
+  },
+
+  {
+    "id": 12,
+    "type": "data-interpretation-single",
+    "difficulty": "medium",
+
+    "question": "According to the graph, approximately what was the percent increase in revenue from 2022 to 2024?",
+
+    "instruction": "Select one answer.",
+
+    "maxSelections": 1,
+
+    "choices": [
+      "10%",
+      "20%",
+      "25%",
+      "40%",
+      "50%"
+    ],
+
+    "answer": [3],
+
+    "image": "quant/section1/q11_revenue_graph.png"
+  },
+
+  {
+    "id": 13,
+    "type": "data-interpretation-multiple",
+    "difficulty": "hard",
+
+    "question": "Which TWO statements are supported by the graph?",
+
+    "instruction": "Select two answers.",
+
+    "maxSelections": 2,
+
+    "choices": [
+      "Revenue increased every year.",
+      "Revenue in 2023 was greater than revenue in 2022.",
+      "The largest annual increase occurred between 2024 and 2025.",
+      "Revenue in 2021 and 2022 was identical.",
+      "Revenue decreased between 2023 and 2024."
+    ],
+
+    "answer": [1, 2],
+
+    "image": "quant/section1/q11_revenue_graph.png"
+  },
+
+  {
+    "id": 14,
+    "type": "quant-multiple",
+    "difficulty": "hard",
+
+    "question": "If x is an integer and -3 < x < 4, which of the following could be values of x?",
+
+    "instruction": "Select all that apply.",
+
+    "maxSelections": 4,
+
+    "choices": [
+      "-4",
+      "-2",
+      "0",
+      "3",
+      "5"
+    ],
+
+    "answer": [1, 2, 3],
+
+    "image": null
+  },
+
+  {
+    "id": 15,
+    "type": "numeric-entry",
+    "difficulty": "hard",
+
+    "question": "A machine produces 240 components in 6 hours at a constant rate. At the same rate, how many components will it produce in 8.5 hours?",
+
+    "instruction": "Enter your answer.",
+
+    "maxSelections": 1,
+
+    "choices": [],
+
+    "numericAnswer": "340",
+
+    "image": null
+  }
+
+    ]
+ } 
+}

@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRE-Practice-Test</title>
+    <link rel="stylesheet" href="{% static 'gradsprint/css/calculator.css'%}">
     <link rel="stylesheet" href="{% static 'gradsprint/css/style.css'%}">
     <script src= "{% static 'gradsprint/js/questions.js'%}"></script>
+    <script src= "{% static 'gradsprint/js/calculator.js'%}" defer></script>
     <script src="{% static 'gradsprint/js/choiceRendering.js'%}"></script>
     <script src="{% static 'gradsprint/js/testRendering.js'%}"></script>
     
@@ -23,6 +25,7 @@
                     <span></span>
                     <button id="quit" class="button-bar">Quit</button>
                     <button id="end-section" class="button-bar">End Sec.</button>
+                    <button id="calculator-button" class="button-bar">Clac</button>
                     <button id="mark" class="button-bar">Mark</button>
                     <button id="review" class="button-bar">Review</button>
                     <button id="previous" class="button-bar">Prev</button>
@@ -51,6 +54,48 @@
         </div>
     </header>
 
+    <!--CALCULATOR-->
+
+    <div id="calculator" class="calculator hidden">
+
+        <div id="calculator-header" class="calculator-header">
+            Calculator
+            <button id="calculator-close" type="button">×</button>
+        </div>
+
+        <input type="text" id="calculator-display" readonly>
+
+        <div class ="calculator-buttons">
+
+            <button type="button" data-action="clear">C</button>
+            <button type="button" data-action="backspace">⌫</button>
+            <button type="button" data-action="sqrt">√</button>
+            <button type="button" data-value="/">÷</button>
+
+            <button type="button" data-value="7">7</button>
+            <button type="button" data-value="8">8</button>
+            <button type="button" data-value="9">9</button>
+            <button type="button" data-value="*">×</button>
+
+            <button type="button" data-value="4">4</button>
+            <button type="button" data-value="5">5</button>
+            <button type="button" data-value="6">6</button>
+            <button type="button" data-value="-">−</button>
+
+            <button type="button" data-value="1">1</button>
+            <button type="button" data-value="2">2</button>
+            <button type="button" data-value="3">3</button>
+            <button type="button" data-value="+">+</button>
+
+            <button type="button" data-action="sign">±</button>
+            <button type="button" data-value="0">0</button>
+            <button type="button" data-value=".">.</button>
+            <button type="button" data-action="equals">=</button>
+
+            <button type="button" data-action="percent">%</button>
+        </div>
+    </div>
+
     <div id="test-prompt">
 
         <button id="start-section">START TEST</button>
@@ -67,9 +112,38 @@
                     <div id="question-box" class="question-container">
                     <p id="instruction"></p>
                     <p id="question"></p>
+
+                        <!-- Quantitative Comparison area -->
+                        <div id="quantity-comparison" class="quantity-comparison">
+
+                            <div class="quantity-box">
+
+                                <div class="quantity-title">
+                                    Quantity A
+                                </div>
+
+                                <div id="quantity-a" class="quantity-value">
+                                </div>
+
+                            </div>
+
+
+                            <div class="quantity-box">
+
+                                <div class="quantity-title">
+                                    Quantity B
+                                </div>
+
+                                <div id="quantity-b" class="quantity-value">
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--finish quant comparison section-->
+                    
                     <p id="choices"></p>
                     </div>
-        
+    
                 </div>
 
             </div>

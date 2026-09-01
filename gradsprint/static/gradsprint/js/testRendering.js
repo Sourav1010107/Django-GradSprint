@@ -329,6 +329,14 @@ function questionEnv() {
 
     const passageContainer = document.querySelector(".passage-container");
     const questionContainer = document.querySelector(".question-container");
+    const quantComparison = document.querySelector(".quantity-comparison");
+
+    
+    if (questions[currentQuestion].type !== "quantitative-comparison") {
+        quantComparison.style.display = "none";
+    }else{
+        quantComparison.style.dispaly ="";
+    }
 
     if (questions[currentQuestion].type !== "reading-single") {
 

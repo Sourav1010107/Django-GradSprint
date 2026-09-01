@@ -239,3 +239,37 @@ body{
     line-height: 1.5;
     padding: 10px;
 }
+
+/* Quantity A / Quantity B */
+
+.quantity-container {
+    display: flex;
+    width: 100%;
+    margin: 30px 0;
+    border: 1px solid #999;
+}
+
+
+.quantity-box {
+    width: 50%;
+    text-align: center;
+}
+
+
+.quantity-box:first-child {
+    border-right: 1px solid #999;
+}
+
+
+.quantity-heading {
+    background-color: #eeeeee;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #999;
+}
+
+
+.quantity-value {
+    padding: 35px 20px;
+    font-size: 22px;
+}

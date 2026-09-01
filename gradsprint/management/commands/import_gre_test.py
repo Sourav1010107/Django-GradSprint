@@ -79,7 +79,6 @@ class Command(BaseCommand):
                 f"Using existing test: {test.name}"
             )
 
-
         # -------------------------
         # CREATE / GET SECTION
         # -------------------------
@@ -157,6 +156,10 @@ class Command(BaseCommand):
                 instruction=item["instruction"],
 
                 passage=item.get("passage"),
+
+                quantityA = item.get("quantityA"),
+
+                quantityB = item.get("quantityB"),
 
                 max_selections=item.get(
                     "maxSelections",
