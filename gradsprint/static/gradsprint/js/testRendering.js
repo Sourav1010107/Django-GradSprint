@@ -329,13 +329,13 @@ function questionEnv() {
 
     const passageContainer = document.querySelector(".passage-container");
     const questionContainer = document.querySelector(".question-container");
-    const quantComparison = document.querySelector(".quantity-comparison");
+    const quantComparison = document.querySelector("#quantity-comparison");
 
     
     if (questions[currentQuestion].type !== "quantitative-comparison") {
-        quantComparison.style.display = "none";
+        quantComparison.classList.add("hidden");
     }else{
-        quantComparison.style.dispaly ="";
+        quantComparison.classList.remove("hidden")
     }
 
     if (questions[currentQuestion].type !== "reading-single") {

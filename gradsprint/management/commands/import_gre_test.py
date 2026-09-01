@@ -157,9 +157,9 @@ class Command(BaseCommand):
 
                 passage=item.get("passage"),
 
-                quantityA = item.get("quantityA"),
+                quantity_a = item.get("quantityA"),
 
-                quantityB = item.get("quantityB"),
+                quantity_b = item.get("quantityB"),
 
                 max_selections=item.get(
                     "maxSelections",

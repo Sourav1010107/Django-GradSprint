@@ -257,7 +257,7 @@ function renderQuantChoices() {
 
 
     
-     if (questions[currentQuestion].type === "data-interpretation-single") {
+    else if (questions[currentQuestion].type === "data-interpretation-single") {
 
         questions[currentQuestion].choices.forEach((choice)=>{
 

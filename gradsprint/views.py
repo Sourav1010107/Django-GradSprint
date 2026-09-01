@@ -30,10 +30,15 @@ def test_data(request, test_id):
                 "type": question.question_type,
                 "difficulty": question.difficulty,
                 "question": question.question,
-                "quantityA": question.quantityA,
-                "quantityB": question.quantityB,
+                "quantityA": question.quantity_a,
+                "quantityB": question.quantity_b,
                 "instruction": question.instruction,
                 "passage": question.passage,
+                "image": (
+                    question.image.url
+                    if question.image
+                    else None
+                    ),
 
                 "passageRef": (
                     question.passage_ref_id
