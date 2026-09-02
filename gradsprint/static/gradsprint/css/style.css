@@ -283,6 +283,7 @@ body{
 }
 
 /* exit the Test window */
+
 .test-exit{
     position: absolute;
     background-color: antiquewhite;
