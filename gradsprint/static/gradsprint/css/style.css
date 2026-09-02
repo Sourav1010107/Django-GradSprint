@@ -242,7 +242,7 @@ body{
 
 /* Quantity A / Quantity B */
 
-.quantity-container {
+#quantity-comparison {
     display: flex;
     width: 100%;
     margin: 30px 0;
@@ -261,7 +261,7 @@ body{
 }
 
 
-.quantity-heading {
+.quantity-title {
     background-color: #eeeeee;
     padding: 10px;
     font-weight: bold;

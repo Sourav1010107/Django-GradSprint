@@ -290,7 +290,17 @@ function renderSection() {
     // Activate section-header and section-prompt
     const sectionHeader = document.querySelector('#section-header');
     const sectionPrompt = document.querySelector('#section-prompt');
-    
+
+
+    //-------CALCULATOR BUTTON AVAILABILITY--------
+    const nameSection = greTest.sections[currentSection].name;
+
+    if ((nameSection === "Quantitative Reasoning 1")||(nameSection === "Quantitative Reasoning 2")) {
+        document.querySelector('#calculator-button').classList.remove("hidden");
+    }else{
+        document.querySelector('#calculator-button').classList.add("hidden");
+    }
+    //---------
 
     sectionHeader.classList.remove("hidden");
     sectionPrompt.classList.remove("hidden");
@@ -306,6 +316,7 @@ function renderSection() {
     answers = questions.map(()=>[]);
     markStatus = questions.map(()=>false);
     
+
 
     //--------START TIMER-------
 
