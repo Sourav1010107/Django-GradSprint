@@ -269,3 +269,16 @@ body{
     padding: 35px 20px;
     font-size: 22px;
 }
+
+/* exit the section window */
+
+.section-exit{
+    position: absolute;
+    background-color: antiquewhite;
+    top: 200px;
+    right: 200px;
+    width: 250px;
+    padding: 5px;
+    border: 1px solid gray;
+}
+

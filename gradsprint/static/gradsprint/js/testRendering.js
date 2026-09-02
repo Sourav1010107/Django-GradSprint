@@ -340,7 +340,7 @@ function questionEnv() {
 
     const passageContainer = document.querySelector(".passage-container");
     const questionContainer = document.querySelector(".question-container");
-    const quantComparison = document.querySelector("#quantity-comparison");
+    const quantComparison = document.querySelector(".quantity-comparison");
 
     
         
@@ -358,11 +358,11 @@ function questionEnv() {
 
         const envChoice = document.querySelector('#choices');
         envChoice.style.margin = "0 3%";
-        
+
         if (questions[currentQuestion].type !== "quantitative-comparison") {
-            quantComparison.classList.add("hidden");
+            quantComparison.style.display = "none";
         }else{
-            quantComparison.classList.remove("hidden");
+            quantComparison.style.display = "";
         }
 
     } else {
