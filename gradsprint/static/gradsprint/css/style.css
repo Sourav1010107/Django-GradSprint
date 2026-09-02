@@ -14,13 +14,13 @@ body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     height: 80px;
     width: 150px;
-    background-color: black;
+    background-color: rgb(93, 240, 220);
     border: 1px solid;
     margin: 100px 250px;
 }
 
 #start-section:hover{
-    color: black;
+    color: gray;
     background-color: blanchedalmond;
 }
 
