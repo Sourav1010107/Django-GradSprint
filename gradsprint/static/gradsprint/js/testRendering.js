@@ -482,6 +482,7 @@ function finishTest() {
     clearInterval(timer);
     timer = null;
     alert("Test Completed.");
+    confirmTestExit();
 }
 
 //-----------------------------------
