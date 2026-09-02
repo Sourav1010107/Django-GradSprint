@@ -409,16 +409,36 @@ function renderQuestion() {
     document.querySelector('#close-Review').onclick = closeReview;
     document.querySelector('#go-question').onclick = closeReview;
 
-    document.querySelector('#quit').onclick = finishTest;
-    document.querySelector('#end-section').onclick = finishSection;
-    document.querySelector('#quit-r').onclick = finishTest;
-    document.querySelector('#end-section-r').onclick = finishSection;
+    document.querySelector('#quit').onclick = confirmSectionExit;
+    document.querySelector('#end-section').onclick = confirmSectionExit;
+    document.querySelector('#quit-r').onclick = confirmSectionExit;
+    document.querySelector('#end-section-r').onclick = confirmSectionExit;
+
+    document.querySelector('#sec-yes').onclick = finishSection;
+    document.querySelector('#sec-no').onclick = closeSectionExit;
 }
 
 
 //--------------------------------------
 //     FINISH SECTION AND QUIT TEST ?
 //--------------------------------------
+
+
+//-------------------
+//   SECTION EXIT
+//-------------------
+
+function closeSectionExit(){
+    const secExit = document.querySelector('#section-exit');
+    
+    secExit.classList.add("hidden");
+}
+
+function confirmSectionExit(){
+    const secExit = document.querySelector('#section-exit');
+    
+    secExit.classList.remove("hidden");
+}
 
 function finishSection() {
 
@@ -429,7 +449,10 @@ function finishSection() {
     else {
         finishTest();
     }
+    
+    closeSectionExit();
 }
+
 
 function nextSection() {
     currentSection++;
