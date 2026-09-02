@@ -282,3 +282,13 @@ body{
     border: 1px solid gray;
 }
 
+/* exit the Test window */
+.test-exit{
+    position: absolute;
+    background-color: antiquewhite;
+    top: 200px;
+    right: 200px;
+    width: 250px;
+    padding: 5px;
+    border: 1px solid gray;
+}
