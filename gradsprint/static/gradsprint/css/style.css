@@ -9,14 +9,18 @@ body{
 }
 
 #start-section{
-    height: 50px;
-    width: 130px;
-    background-color: aquamarine;
+    color: white;
+    font-size: large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 80px;
+    width: 150px;
+    background-color: black;
     border: 1px solid;
     margin: 100px 250px;
 }
 
 #start-section:hover{
+    color: black;
     background-color: blanchedalmond;
 }
 

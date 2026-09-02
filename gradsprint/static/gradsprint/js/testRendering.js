@@ -479,10 +479,10 @@ function confirmTestExit(){
 
 function finishTest() {
 
+    closeTestExit();
     clearInterval(timer);
     timer = null;
     alert("Test Completed.");
-    confirmTestExit();
 }
 
 //-----------------------------------
