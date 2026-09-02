@@ -343,11 +343,11 @@ function questionEnv() {
     const quantComparison = document.querySelector("#quantity-comparison");
 
     
-    if (questions[currentQuestion].type !== "quantitative-comparison") {
-        quantComparison.classList.add("hidden");
-    }else{
-        quantComparison.classList.remove("hidden");
-    }
+        if (questions[currentQuestion].type !== "quantitative-comparison") {
+            quantComparison.classList.add("hidden");
+        }else{
+            quantComparison.classList.remove("hidden");
+        }
 
     if (questions[currentQuestion].type !== "reading-single") {
 
