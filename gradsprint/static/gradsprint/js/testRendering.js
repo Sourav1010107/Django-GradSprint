@@ -346,7 +346,7 @@ function questionEnv() {
     if (questions[currentQuestion].type !== "quantitative-comparison") {
         quantComparison.classList.add("hidden");
     }else{
-        quantComparison.classList.remove("hidden")
+        quantComparison.classList.remove("hidden");
     }
 
     if (questions[currentQuestion].type !== "reading-single") {
