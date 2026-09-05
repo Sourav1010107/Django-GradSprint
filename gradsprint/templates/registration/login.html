@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Kaooshi Login</title>
+        <link rel="stylesheet" href="{% static 'gradsprint/css/login.css' %}">
+    </head>
+    <body>
+        <div class="login-page">
+            <div class="login-box">
+                <div class="logo">
+                    <span class="logo-left">kaoo</span>
+                    <span class="logo-right">SHI</span>
+                </div>
+
+                <h1>Login</h1>
+                <p class="subtitle">Welcome back! Please login to continue.</p>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="error">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group">
+                        <label for="{{ form.username.id_for_label }}">Username</label>
+                        {{ form.username }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.password.id_for_label }}">Password</label>
+                        {{ form.password }}
+                    </div>
+
+                    <div class="form-options">
+                        <label class="show-password">
+                            <input type="checkbox" id="show-password">
+                            <span>Show password</span>
+                        </label>
+
+                        <a href="{% url 'password_reset' %}">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        Login
+                    </button>
+                </form>
+
+                <div class="register-area">
+                    <span>Don't have an account?</span>
+                    <a href="{% url 'gradsprint:register' %}">
+                        Register
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const showPassword=document.getElementById("show-password");
+            const password=document.getElementById("id_password");
+
+            showPassword.addEventListener("change",function(){
+                password.type=this.checked?"text":"password";
+            });
+        </script>
+    </body>
+</html>

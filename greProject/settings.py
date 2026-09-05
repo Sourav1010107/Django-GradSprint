@@ -140,3 +140,7 @@ BKASH_BASE_URL = os.getenv(
 )
 
 BKASH_CALLBACK_URL = os.getenv("BKASH_CALLBACK_URL")
+
+LOGIN_REDIRECT_URL = "/dashboard/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
+LOGIN_URL = "/accounts/login/"

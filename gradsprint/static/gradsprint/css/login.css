@@ -1,0 +1,144 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    color:#1f2937;
+}
+
+.login-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 15px;
+}
+
+.login-box{
+    width:100%;
+    max-width:480px;
+    background:#fff;
+    padding:40px;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,0.08);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:36px;
+    font-weight:800;
+}
+
+.logo-left{
+    background:#19b6b6;
+    color:#fff;
+    padding:3px 8px;
+}
+
+.logo-right{
+    color:#19b6b6;
+}
+
+.login-box h1{
+    margin:0;
+    text-align:center;
+    font-size:32px;
+}
+
+.subtitle{
+    margin:10px 0 30px;
+    text-align:center;
+    color:#6b7280;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    font-weight:600;
+}
+
+.form-group input{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    font-size:16px;
+}
+
+.form-group input:focus{
+    outline:none;
+    border-color:#19b6b6;
+    box-shadow:0 0 0 2px rgba(25,182,182,0.12);
+}
+
+.form-options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.show-password{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    cursor:pointer;
+}
+
+.show-password input{
+    width:auto;
+}
+
+.form-options a,
+.register-area a{
+    color:#19b6b6;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.form-options a:hover,
+.register-area a:hover{
+    text-decoration:underline;
+}
+
+.login-btn{
+    width:100%;
+    padding:13px;
+    background:#19b6b6;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    background:#139c9c;
+}
+
+.register-area{
+    margin-top:28px;
+    padding-top:22px;
+    border-top:1px solid #e5e7eb;
+    text-align:center;
+}
+
+.error{
+    margin-bottom:18px;
+    color:#b91c1c;
+}
+
+.errorlist{
+    margin:0;
+    padding-left:18px;
+}

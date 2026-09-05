@@ -1,0 +1,222 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaooshi Dashboard</title>
+    <link rel="stylesheet" href="{% static 'gradsprint/css/logo.css' %}">
+    <link rel="stylesheet" href="{% static 'gradsprint/css/dashboard.css' %}">
+    <script src="{% static 'gradsprint/js/logo.js' %}"></script>
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="logo">
+            <span id="kaoo">kaoo</span>
+            <span id="shi">SHI</span>
+        </div>
+
+        <div class="user-menu">
+            <span class="username">{{ user.username }}</span>
+
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+    </header>
+    <main class="dashboard-container">
+        <div class="dashboard-heading">
+            <h1>Performance Dashboard</h1>
+
+        </div>
+        <!-- GENERAL STATISTICS -->
+        <section class="statistics-grid">
+            <div class="stat-card">
+                <span class="stat-title">Questions Answered</span>
+                <span class="stat-value">{{ total_answered }}</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Correct Answers</span>
+                <span class="stat-value">{{ total_correct }}</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Overall Accuracy</span>
+                <span class="stat-value">{{ overall_accuracy }}%</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Tests Completed</span>
+                <span class="stat-value">{{ test_completed }}</span>
+            </div>
+        </section>
+        <!-- PREDICTED GRE SCORE -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Predicted GRE Score</h2>
+                <p>Based on your most recent completed tests.</p>
+            </div>
+            {% if predicted_score %}
+                <div class="score-section">
+                    <div>
+                        <span class="score-label">Predicted Score</span>
+                        <div class="predicted-score">{{ predicted_score|floatformat:1 }}</div>
+                    </div>
+                    <div>
+                        <span class="score-label">Estimated Range</span>
+                        <div class="score-range">{{ predicted_range }}</div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="empty-message">Complete a full practice test to receive a predicted GRE score.</div>
+            {% endif %}
+        </section>
+        <!-- POTENTIAL WEAK AREA -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Potential Weak Area</h2>
+                <p>Lowest-accuracy subtopic with at least five attempted questions.</p>
+            </div>
+            {% if lowest_accuracy_subtopic %}
+                <div class="weakness-card">
+                    <div>
+                        <span class="small-label">Topic</span>
+                        <strong>{{ lowest_accuracy_subtopic.topic }}</strong>
+                    </div>
+                    <div>
+                        <span class="small-label">Subtopic</span>
+                        <strong>{{ lowest_accuracy_subtopic.subtopic }}</strong>
+                    </div>
+                    <div>
+                        <span class="small-label">Accuracy</span>
+                        <strong>{{ lowest_accuracy_subtopic.accuracy }}%</strong>
+                    </div>
+                    <div>
+                        <span class="small-label">Attempted</span>
+                        <strong>{{ lowest_accuracy_subtopic.attempted }}</strong>
+                    </div>
+                </div>
+            {% else %}
+                <div class="empty-message">
+                    Answer at least 5 questions from a subtopic before weakness statistics are shown.
+                </div>
+            {% endif %}
+        </section>
+        <!-- SUBTOPIC PERFORMANCE -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Subtopic Performance</h2>
+                <p>Accuracy statistics grouped under each GRE topic.</p>
+            </div>
+            {% if topic_statistics %}
+                {% for topic, subtopics in topic_statistics.items %}
+                    <div class="topic-block">
+                        <h3 class="topic-title">{{ topic }}</h3>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Subtopic</th>
+                                        <th>Attempted</th>
+                                        <th>Accuracy</th>
+                                        <th>Hard Attempted</th>
+                                        <th>Hard Accuracy</th>
+                                        <th>Data Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in subtopics %}
+                                        <tr>
+                                            <td class="subtopic-name">{{ item.subtopic }}</td>
+                                            <td>{{ item.attempted }}</td>
+                                            <td>
+                                                {% if item.accuracy != None %}
+                                                    {{ item.accuracy }}%
+                                                {% else %}
+                                                    —
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ item.hard_attempted }}</td>
+                                            <td>
+                                                {% if item.hard_accuracy != None %}
+                                                    {{ item.hard_accuracy }}%
+                                                {% else %}
+                                                    —
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if item.enough_data %}
+                                                    <span class="status reliable">Reliable</span>
+                                                {% else %}
+                                                    <span class="status limited">Limited Data</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-message">No question performance data is available yet.</div>
+            {% endif %}
+        </section>
+        <!-- QUESTION TIME PERFORMANCE -->
+        <section class="panel">
+            <div class="panel-header">
+                <h2>Question Timing</h2>
+                <p>Compare your time with the expected time for each question.</p>
+            </div>
+            {% if question_time_statistics %}
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Topic</th>
+                                <th>Subtopic</th>
+                                <th>Difficulty</th>
+                                <th>Expected Time</th>
+                                <th>Your Time</th>
+                                <th>Performance</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in question_time_statistics %}
+                                <tr>
+                                    <td>#{{ item.question_id }}</td>
+                                    <td>{{ item.topic|default:"Uncategorized" }}</td>
+                                    <td>{{ item.subtopic|default:"Uncategorized" }}</td>
+                                    <td class="capitalize">{{ item.difficulty }}</td>
+                                    <td>{{ item.expected_time }} sec</td>
+                                    <td>{{ item.time_taken }} sec</td>
+                                    <td>
+                                        {% if item.time_taken > item.expected_time %}
+                                            <span class="time-slow">Slower</span>
+                                        {% elif item.time_taken < item.expected_time %}
+                                            <span class="time-fast">Faster</span>
+                                        {% else %}
+                                            <span>On Target</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.is_correct %}
+                                            <span class="answer-correct">Correct</span>
+                                        {% else %}
+                                            <span class="answer-wrong">Incorrect</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="empty-message">Timing information is not available yet.</div>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

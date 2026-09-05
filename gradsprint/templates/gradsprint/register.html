@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kaooshi Register</title>
+        <link rel="stylesheet" href="{% static 'gradsprint/css/logo.css' %}">
+        <link rel="stylesheet" href="{% static 'gradsprint/css/register.css' %}">
+        <script src="{% static 'gradsprint/js/logo.js' %}"></script>
+        
+    </head>
+    <body>
+        <header>
+            <h2 id="kaoo">kaoo</h2> <h2 id="shi">SHI</h2>
+        </header>
+        <div class="register-page">
+            <div class="register-box">
+                <h1>Create Account</h1>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="show-password">
+                        <input type="checkbox" id="show-password">
+                        <label for="show-password">Show password</label>
+                    </div>
+
+                    <button type="submit" class="register-btn">Register</button>
+                </form>
+
+                <p class="login-link">
+                    Already have an account?
+                    <a href="{% url 'login' %}">Login</a>
+                </p>
+            </div>
+        </div>
+        
+    </body>
+    <script>
+        const showPassword = document.getElementById("show-password");
+
+        showPassword.addEventListener("change", function(){
+            const pass1 = document.getElementById("id_password1")
+            const pass2 = document.getElementById("id_password2")
+
+            const type = this.checked ? "text": "password";
+
+            pass1.type = type;
+            pass2.type = type;
+        });
+    </script>
+</html>

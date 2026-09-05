@@ -1,0 +1,21 @@
+#kaoo{
+    display: inline-block;
+    margin-left: 100px;
+    width: 100px;
+    text-align: center;
+    background-color: rgb(4, 217, 224);
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    gap: 5px;
+}
+
+#shi{
+    display: inline-block;
+    background-color: white;
+    color: rgb(4, 217, 224);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+}
+
+
