@@ -80,6 +80,7 @@ body {
 }
 
 .stat-card {
+    font-family: 'Courier New', Courier, monospace;
     background: white;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -88,7 +89,7 @@ body {
 
 .stat-title {
     display: block;
-    color: #666;
+    color: #535353;
     font-size: 14px;
     margin-bottom: 12px;
 }
@@ -119,7 +120,7 @@ body {
 
 .panel-header p {
     margin: 0;
-    color: #666;
+    color: #555454;
     font-size: 14px;
 }
 
@@ -133,7 +134,7 @@ body {
 
 .score-label {
     display: block;
-    color: #666;
+    color: #525151;
     font-size: 13px;
     margin-bottom: 6px;
 }
@@ -167,7 +168,7 @@ body {
 }
 
 .small-label {
-    color: #666;
+    color: #535151;
     font-size: 12px;
 }
 
@@ -234,7 +235,7 @@ tbody tr:hover {
 
 .limited {
     background: #f3f3f3;
-    color: #666;
+    color: #5e5c5c;
 }
 
 /* ANSWER STATUS */
@@ -271,7 +272,7 @@ tbody tr:hover {
     padding: 18px;
     background: #f7f7f7;
     border-radius: 5px;
-    color: #666;
+    color: #5a5959;
     font-size: 14px;
 }
 
