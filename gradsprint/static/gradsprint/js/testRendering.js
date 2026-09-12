@@ -9,6 +9,7 @@ let timerStatus = false;
 let questions, answers;
 let timeRemaining, timer;
 let markStatus;
+let questionStartTime=null;
 
 
 //------------------------------------
@@ -39,7 +40,8 @@ async function loadTest(testId) {
 //    NEXT QUESTION  
 //--------------------------
 
-function nextQuestion(){
+async function nextQuestion(){
+    await saveCurrentAnswer();
     currentQuestion++;
     currentQuestion = Math.min(questions.length-1, currentQuestion);
     renderQuestion();
@@ -49,7 +51,8 @@ function nextQuestion(){
 //    PREVIOUS QUESTION  
 //--------------------------
 
-function previousQuestion(){
+async function previousQuestion(){
+    await saveCurrentAnswer();
     currentQuestion--;
     currentQuestion = Math.max(0, currentQuestion);
     renderQuestion();
@@ -72,7 +75,7 @@ function timerDisplay(){
 }
 
 
-function timerUpdate() {
+async function timerUpdate() {
 
     if (timeRemaining > 0) {
         timeRemaining--;
@@ -82,6 +85,8 @@ function timerUpdate() {
     if(timeRemaining <= 0){
         clearInterval(timer);
         timer = null;
+
+        await saveCurrentAnswer();
         currentSection++;
 
         if (currentSection >= greTest.sections.length) {
@@ -182,7 +187,9 @@ function reviewTable() {
         row.append(markCell);
 
         // Make entire row clickable
-        row.addEventListener("click",()=>{
+        row.addEventListener("click",async ()=>{
+            await saveCurrentAnswer();
+
             currentQuestion = index;
             renderQuestion();
 
@@ -326,7 +333,6 @@ function renderSection() {
     timer = setInterval(timerUpdate, 1000);
 
     renderQuestion();
-    
 
 }
 
@@ -339,6 +345,7 @@ function renderSection() {
 function questionEnv() {
 
     const passageContainer = document.querySelector(".passage-container");
+    const imageContainer = document.querySelector(".image-container");
     const questionContainer = document.querySelector(".question-container");
     const quantComparison = document.querySelector(".quantity-comparison");
 
@@ -361,12 +368,29 @@ function questionEnv() {
 
         if (questions[currentQuestion].type !== "quantitative-comparison") {
             quantComparison.style.display = "none";
+
+            if (questions[currentQuestion].type !== "data-interpretation-single") {
+                // Hide image
+                imageContainer.style.display = "none";
+
+            }else{
+                // Show image
+                imageContainer.style.display = "";
+
+                // Return to two equal columns
+                questionContainer.style.width = "";
+                questionContainer.style.flex = "4";
+                questionContainer.style.padding = "0 0";
+
+
+                const envChoice = document.querySelector('#choices');
+                envChoice.style.margin = "0";
+            }
         }else{
             quantComparison.style.display = "";
         }
 
     } else {
-
         // Show passage
         passageContainer.style.display = "";
 
@@ -375,13 +399,11 @@ function questionEnv() {
         questionContainer.style.flex = "4";
         questionContainer.style.padding = "0 0";
 
-
         const envChoice = document.querySelector('#choices');
         envChoice.style.margin = "0";
 
     }
 }
-
 
 //----------------------------------
 //       QUESTION RENDERING
@@ -389,6 +411,7 @@ function questionEnv() {
 
 
 function renderQuestion() {
+    
     //document.querySelector('test-title').textContent = greTest.testName;
     document.querySelector('#question-number').innerHTML=`Question ${currentQuestion + 1} of  ${questions.length}`;
     document.querySelector('#question').innerHTML= questions[currentQuestion].question;
@@ -418,6 +441,8 @@ function renderQuestion() {
     document.querySelector('#sec-no').onclick = closeSectionExit;
     document.querySelector('#test-yes').onclick = finishTest;
     document.querySelector('#test-no').onclick = closeTestExit;
+    
+    questionStartTime = Date.now();
 }
 
 
@@ -442,16 +467,15 @@ function confirmSectionExit(){
     secExit.classList.remove("hidden");
 }
 
-function finishSection() {
+async function finishSection() {
+    await saveCurrentAnswer();
 
     if (currentSection < greTest.sections.length - 1) {
-
         nextSection();
     }
     else {
         finishTest();
     }
-
     closeSectionExit();
 }
 
@@ -477,7 +501,8 @@ function confirmTestExit(){
     secExit.classList.remove("hidden");
 }
 
-function finishTest() {
+async function finishTest() {
+    await saveCurrentAnswer();
 
     closeTestExit();
     clearInterval(timer);
@@ -491,4 +516,5 @@ function finishTest() {
 
 document.addEventListener("DOMContentLoaded", ()=>{
     loadTest(2);
+    
 });

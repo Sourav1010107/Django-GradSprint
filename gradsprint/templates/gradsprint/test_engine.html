@@ -10,6 +10,7 @@
     <script src= "{% static 'gradsprint/js/calculator.js'%}" defer></script>
     <script src="{% static 'gradsprint/js/choiceRendering.js'%}"></script>
     <script src="{% static 'gradsprint/js/testRendering.js'%}"></script>
+    <script src="{% static 'gradsprint/js/answerSaving.js'%}"></script>
     
 </head>
 
@@ -107,10 +108,12 @@
 
                     <div id="passage" class="passage-container">
                     </div>
+                    <div id="image" class="image-container">
+                    </div>
                     
                     <div id="question-box" class="question-container">
                     <p id="instruction"></p>
-                    <p id="image"></p>
+                    <p id="qs-image"></p>
                     <p id="question"></p>
 
                         <!-- Quantitative Comparison area -->

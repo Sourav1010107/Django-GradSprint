@@ -1,8 +1,6 @@
-
 //--------------------------
 //       CHOICES  
 //--------------------------
-
 
 function renderChoices(){
 
@@ -20,12 +18,9 @@ function renderChoices(){
     }
 }
 
-
-
 //----------------------------------
 //       SENTENCE EQUIVALENCE  
 //----------------------------------
-
 
 function renderSentenceEquivalence(){
 
@@ -43,16 +38,13 @@ function renderSentenceEquivalence(){
         checkbox.value= choice;
 
         // creating the checkbox element prop.
-
         label.append(checkbox);
         label.append(' '+ choice);
 
         // loading the saved answers in the question paper
-
         checkbox.checked = answers[currentQuestion].includes(choice);
 
         // save the choice in the answer array
-
         checkbox.addEventListener("change", ()=>{
 
             if(answers[currentQuestion].length >= 2){
@@ -71,15 +63,12 @@ function renderSentenceEquivalence(){
                 
         });
     
-
         // add choices in the HTML element
-
         container.append(label);
         container.append(linebreak);
 
     });
 }
-
 
 //------------------------------
 //       TEXT-COMPLETION
@@ -89,6 +78,7 @@ function renderTextCompletion(){
 
     let container = document.querySelector('#choices');
     let containerPassage = document.querySelector('#passage');
+    
     container.innerHTML= "";
     containerPassage.innerHTML = "";
 
@@ -120,13 +110,11 @@ function renderTextCompletion(){
             table.append(row);
 
             // reload answer
-
             if (answers[currentQuestion][index]=== choice) {
                 radio.checked = true;
             }
 
             // make entire row clickable and save answer
-
             row.addEventListener("click", ()=>{
                 radio.checked = true;
                 answers[currentQuestion][index] = choice; // save answer
@@ -138,7 +126,6 @@ function renderTextCompletion(){
         container.append(table);
     });
 }
-
 
 //------------------------------
 //    READING PASSAGE
@@ -169,41 +156,31 @@ function renderReadingPassage(){
         containerChoice.append(linebreak);
 
         // reload answer
-
         if (answers[currentQuestion] === choice) {
             radio.checked = true;
         }
 
         // save answer
-
         radio.addEventListener("click", ()=>{
             radio.checked = true;
             answers[currentQuestion] = choice; // save answer
         });
-        
     });
-
     // loading reference passage
-
     //const loadingquestionNo = questions[currentQuestion].passageRef-1;
-
     const passageRef = questions[currentQuestion].passageRef;
 
     const passageQuestion = questions.find(
         question=> question.id === passageRef
     );
-
     if (passageQuestion) {
         containerPassage.innerHTML = passageQuestion.passage;
     }
-
 }
-
 
 //--------------------------------------
 //        QUANTATIVE QUESTION
 //--------------------------------------
-
 
 function renderQuantChoices() {
 
@@ -211,11 +188,9 @@ function renderQuantChoices() {
     let containerPassage = document.querySelector('#passage');
     let containerImage = document.querySelector('#image');
 
-
     container.innerHTML= "";
     containerPassage.innerHTML = "";
     containerImage.innerHTML = "";
-
 
     // --------------------------------
     // SINGLE ANSWER
@@ -237,7 +212,6 @@ function renderQuantChoices() {
             label.append(' '+ choice);
 
             // reload answer
-
             if (answers[currentQuestion] === choice) {
                 radio.checked = true;
             }
@@ -246,7 +220,6 @@ function renderQuantChoices() {
             container.append(linebreak);
 
             // save answer
-
             radio.addEventListener("click", ()=>{
                 radio.checked = true;
                 answers[currentQuestion] = choice; // save answer
@@ -254,7 +227,6 @@ function renderQuantChoices() {
         
         });
     }
-
 
     
     else if (questions[currentQuestion].type === "data-interpretation-single") {
@@ -273,7 +245,6 @@ function renderQuantChoices() {
             label.append(' '+ choice);
 
             // reload answer
-
             if (answers[currentQuestion] === choice) {
                 radio.checked = true;
             }
@@ -282,15 +253,26 @@ function renderQuantChoices() {
             container.append(linebreak);
 
             // save answer
-
             radio.addEventListener("click", ()=>{
                 radio.checked = true;
-                answers[currentQuestion] = choice; // save answer
-            });
-        
+                answers[currentQuestion] = choice;
+            });      
         });
-    }
+        //passage_ref is used both for passage and image ref.
+        const passageRef = questions[currentQuestion].passageRef;
 
+        const passageQuestion = questions.find(
+            question=> Number(question.id) === Number(passageRef)
+        );
+
+        if (passageQuestion && passageQuestion.image) {
+
+            const img = document.createElement("img");
+
+            img.src = passageQuestion.image;
+            containerImage.append(img);
+        }
+    }
 
     // --------------------------------
     // MULTIPLE ANSWERS
@@ -330,12 +312,9 @@ function renderQuantChoices() {
                         savedChoice => savedChoice != choice
                     );
                 }              
-            });
-    
-            
+            });           
         });
     }
-
 
     // --------------------------------
     // NUMERIC ENTRY
@@ -361,7 +340,6 @@ function renderQuantChoices() {
             answers[currentQuestion] = input.value;
         });
     }
-
 
     // --------------------------------
     // QUANTITATIVE COMPARISON
@@ -408,7 +386,3 @@ function renderQuantChoices() {
         });
     }
 }
-
-
-
-    

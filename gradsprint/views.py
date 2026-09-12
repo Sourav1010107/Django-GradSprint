@@ -1,14 +1,19 @@
+import json
+from decimal import Decimal, InvalidOperation
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 from django.shortcuts import get_object_or_404, render, redirect 
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.views.decorators.http import require_POST
 from collections import defaultdict
 
 from .forms import RegisterForm 
 
 
 
-from .models import Test, Section, StudentAnswer, TestResult
+from .models import Test, Question, Choice, BlankChoice, NumericValue, StudentAnswer, TestResult
 
 # Create your views here.
 
@@ -31,7 +36,7 @@ def register(request):
 
         
 
-
+@ensure_csrf_cookie
 def test_engine(request):
     return render(request, "gradsprint/test_engine.html")
 
@@ -86,7 +91,7 @@ def dashboard(request):
         predicted_score_high = min(340, predicted_score+2)
         predicted_score_low = max(260, predicted_score-2)
 
-        predicted_range = (f"{predicted_score_high} - {predicted_score_low}")
+        predicted_range = f"{predicted_score_low:.0f} - {predicted_score_high: .0f}"
 
     else:
         predicted_score = None
@@ -108,8 +113,8 @@ def dashboard(request):
     for answer in answers:
         question = answer.question
 
-        topic = (question.topic or " Uncategorized")
-        subtopic = (question.subtopic or " Uncategorized")
+        topic = (question.topic or "Uncategorized")
+        subtopic = (question.subtopic or "Uncategorized")
 
         #tuple as key to avoid same subtopic under different topic creating ERRoR
         key = (topic, subtopic)
@@ -251,7 +256,10 @@ def dashboard(request):
 def test_data(request, test_id):
 
     # Get the requested test from PostgreSQL
-    test = get_object_or_404(Test, id=test_id)
+    test = get_object_or_404(Test.objects.prefetch_related(
+        "sections__questions__choices",
+        "sections__questions__blanks__choices"
+    ), id=test_id)
 
     sections_data = []
 
@@ -284,7 +292,6 @@ def test_data(request, test_id):
                     else None
                 ),
 
-                "maxSelections": question.max_selections,
 
                 "choices": [
                     choice.text
@@ -296,7 +303,8 @@ def test_data(request, test_id):
 
             for blank in question.blanks.order_by("order"):
                 question_data["blanks"].append({
-                    "id": blank.order,
+                    "id": blank.id,
+                    "order": blank.order,
                     "choices": [
                         choice.text 
                         for choice in blank.choices.order_by("order")
@@ -315,12 +323,330 @@ def test_data(request, test_id):
 
         sections_data.append(section_data)
 
-
     data = {
         "id": test.id,
         "testName": test.name,
         "sections": sections_data,
     }
-
     return JsonResponse(data)
 
+
+@login_required
+@require_POST
+def save_answer(request):
+
+    try:
+
+        # --------------------------------
+        # RECEIVE JSON FROM JAVASCRIPT
+        # --------------------------------
+
+        data = json.loads(request.body)
+
+        question_id = data.get("question_id")
+        selected_answer = data.get("selected_answer", [])
+        time_taken = data.get("time_taken", 0)
+
+
+        # --------------------------------
+        # BASIC VALIDATION
+        # --------------------------------
+
+        if not question_id:
+
+            return JsonResponse(
+                {
+                    "success": False,
+                    "error": "question_id is required"
+                },
+                status=400
+            )
+
+        question = get_object_or_404(
+            Question,
+            id=question_id
+        )
+
+        question_type = question.question_type
+
+        is_correct = False
+
+
+        # ==========================================
+        # CHOICE-BASED QUESTIONS
+        # ==========================================
+
+        if question_type in [
+            "sentence-equivalence",
+            "reading-single",
+            "reading-multiple",
+            "quant-single",
+            "quant-multiple",
+            "quantitative-comparison",
+            "data-interpretation-single",
+        ]:
+
+            # --------------------------------
+            # MAKE ANSWER ALWAYS A LIST
+            # --------------------------------
+
+            if isinstance(selected_answer, list):
+
+                selected_values = selected_answer
+
+            elif selected_answer in [None, ""]:
+
+                selected_values = []
+
+            else:
+                selected_values = [
+                    selected_answer
+                ]
+
+
+            # --------------------------------
+            # VALIDATE CHOICES
+            # --------------------------------
+
+            valid_choice_texts = set(
+
+                Choice.objects.filter(
+                    question=question
+                ).values_list(
+                    "text",
+                    flat=True
+                )
+
+            )
+
+            for answer_text in selected_values:
+
+                if answer_text not in valid_choice_texts:
+
+                    return JsonResponse(
+                        {
+                            "success": False,
+                            "error": "Invalid choice submitted"
+                        },
+                        status=400
+                    )
+
+
+            # --------------------------------
+            # GET CORRECT CHOICES
+            # --------------------------------
+
+            correct_answers = set(
+
+                Choice.objects.filter(
+                    question=question,
+                    is_correct=True
+                ).values_list(
+                    "text",
+                    flat=True
+                )
+
+            )
+
+
+            # --------------------------------
+            # COMPARE ANSWERS
+            # --------------------------------
+
+            selected_values_set = set(
+                selected_values
+            )
+
+            is_correct = (
+                selected_values_set
+                == correct_answers
+            )
+
+
+        # ==========================================
+        # TEXT COMPLETION
+        # ==========================================
+
+        elif question_type == "text-completion":
+
+            if not isinstance(
+                selected_answer,
+                list
+            ):
+
+                return JsonResponse(
+                    {
+                        "success": False,
+                        "error": (
+                            "Text completion answer "
+                            "must be a list"
+                        )
+                    },
+                    status=400
+                )
+
+
+            blanks = list(
+
+                question.blanks
+                .prefetch_related("choices")
+                .order_by("order")
+
+            )
+
+
+            # Student must have one position
+            # for each blank
+            if len(selected_answer) != len(blanks):
+
+                is_correct = False
+
+            else:
+
+                is_correct = True
+
+
+                for index, blank in enumerate(blanks):
+
+                    student_choice = (
+                        selected_answer[index]
+                    )
+
+
+                    # Blank still unanswered
+                    if not student_choice:
+
+                        is_correct = False
+                        break
+
+
+                    # Make sure the submitted text
+                    # belongs to THIS blank
+                    valid_choice = (
+                        blank.choices.filter(
+                            text=student_choice
+                        ).exists()
+                    )
+
+
+                    if not valid_choice:
+
+                        is_correct = False
+                        break
+
+
+                    correct_choice = (
+                        blank.choices.filter(
+                            is_correct=True
+                        ).first()
+                    )
+
+
+                    if (
+                        correct_choice is None
+                        or correct_choice.text
+                        != student_choice
+                    ):
+
+                        is_correct = False
+                        break
+
+
+        # ==========================================
+        # NUMERIC ENTRY
+        # ==========================================
+
+        elif question_type == "numeric-entry":
+
+            try:
+
+                # Your JS stores numeric-entry
+                # as a string
+                student_value = Decimal(
+                    str(selected_answer)
+                )
+
+
+                numeric_answer = (
+                    NumericValue.objects.get(
+                        question=question
+                    )
+                )
+
+
+                is_correct = (
+                    student_value
+                    == numeric_answer.correct_value
+                )
+
+
+            except (
+                InvalidOperation,
+                ValueError,
+                TypeError,
+                NumericValue.DoesNotExist
+            ):
+
+                is_correct = False
+
+
+        # ==========================================
+        # UNKNOWN QUESTION TYPE
+        # ==========================================
+
+        else:
+
+            return JsonResponse(
+                {
+                    "success": False,
+                    "error": (
+                        f"Unsupported question type: "
+                        f"{question_type}"
+                    )
+                },
+                status=400
+            )
+
+
+        # ==========================================
+        # SAVE / UPDATE POSTGRESQL
+        # ==========================================
+
+        student_answer, created = (
+            StudentAnswer.objects.update_or_create(
+
+                user=request.user,
+                question=question,
+
+                defaults={
+                    "selected_answer": selected_answer,
+                    "is_correct": is_correct,
+                    "time_taken": time_taken,
+                }
+
+            )
+        )
+
+
+        # --------------------------------
+        # RETURN RESPONSE
+        # --------------------------------
+
+        return JsonResponse(
+            {
+                "success": True,
+                "answer_id": student_answer.id,
+                "created": created
+            }
+        )
+
+
+    except json.JSONDecodeError:
+
+        return JsonResponse(
+            {
+                "success": False,
+                "error": "Invalid JSON"
+            },
+            status=400
+        )

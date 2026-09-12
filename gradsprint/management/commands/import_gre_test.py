@@ -11,11 +11,9 @@ from gradsprint.models import (
     BlankChoice,
 )
 
-
 class Command(BaseCommand):
 
     help = "Import GRE test questions from JSON into PostgreSQL"
-
 
     def add_arguments(self, parser):
 
@@ -66,15 +64,12 @@ class Command(BaseCommand):
         )
 
         if created:
-
             self.stdout.write(
                 self.style.SUCCESS(
                     f"Created test: {test.name}"
                 )
             )
-
         else:
-
             self.stdout.write(
                 f"Using existing test: {test.name}"
             )
