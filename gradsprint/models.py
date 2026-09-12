@@ -116,6 +116,7 @@ class StudentAnswer(models.Model):
     def __str__(self):
         return f"{self.user} - Question {self.question_id}"
 
+
 class TestResult(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="test_results")
     test = models.ForeignKey("Test", on_delete=models.CASCADE, related_name="test_results")

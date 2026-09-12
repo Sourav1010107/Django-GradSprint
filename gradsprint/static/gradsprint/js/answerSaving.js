@@ -14,6 +14,46 @@ function getCSRFToken(){
     return null;
 }
 
+async function generateTestResult(){
+    if(!greTest){
+        return;
+    }
+
+    try{
+        const response=await fetch(
+            `/api/test/${greTest.id}/generate-result/`,
+            {
+                method:"POST",
+                headers:{
+                    "X-CSRFToken":getCSRFToken()
+                }
+            }
+        );
+
+        const data=await response.json();
+
+        if(!response.ok){
+            console.error(
+                "Result generation failed:",
+                data
+            );
+            return;
+        }
+
+        console.log(
+            "Test result generated:",
+            data
+        );
+
+        return data;
+
+    }catch(error){
+        console.error(
+            "Result generation error:",
+            error
+        );
+    }
+}
 
 async function saveCurrentAnswer() {
 
@@ -53,7 +93,6 @@ async function saveCurrentAnswer() {
                 })
             }
         );
-
 
         const data = await response.json();
 

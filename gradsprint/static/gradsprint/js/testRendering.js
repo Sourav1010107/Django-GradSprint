@@ -504,9 +504,11 @@ function confirmTestExit(){
 async function finishTest() {
     await saveCurrentAnswer();
 
-    closeTestExit();
     clearInterval(timer);
     timer = null;
+    const result = await generateTestResult();
+    closeTestExit();
+
     alert("Test Completed.");
 }
 

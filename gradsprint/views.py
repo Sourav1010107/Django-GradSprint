@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.views.decorators.http import require_POST
 from collections import defaultdict
+from django.utils import timezone
 
 from .forms import RegisterForm 
 
@@ -41,6 +42,155 @@ def test_engine(request):
     return render(request, "gradsprint/test_engine.html")
 
 
+@login_required
+@require_POST
+def generate_test_result_view(request,test_id):
+    test=get_object_or_404(
+        Test,
+        id=test_id
+    )
+
+    result=generate_test_result(
+        request.user,
+        test
+    )
+
+    return JsonResponse({
+        "success":True,
+        "result_id":result.id,
+        "verbal_score":result.verbal_score,
+        "quant_score":result.quant_score,
+        "total_score":result.total_score,
+        "correct_answers":result.correct_answers,
+        "total_attempted_question":result.total_attempted_question
+    })
+
+
+@login_required
+def generate_test_result(request,test_id):
+
+    if request.method!="POST":
+        return JsonResponse({
+            "success":False,
+            "error":"POST request required"
+        },status=405)
+
+    user=request.user
+
+    test=get_object_or_404(
+        Test,
+        id=test_id
+    )
+
+    #--------------------------------
+    # GET ANSWERS FOR THIS TEST
+    #--------------------------------
+
+    answers = StudentAnswer.objects.filter(
+        user=user,
+        question__section__test=test
+    ).select_related(
+        "question",
+        "question__section"
+    )
+
+    if not answers.exists():
+        return JsonResponse({
+            "success":False,
+            "error":"No answers found for this test"
+        },status=400)
+
+    #--------------------------------
+    # VERBAL ANSWERS
+    #--------------------------------
+
+    verbal_answers=answers.filter(
+        question__section__name__istartwith= ("verbal" or "Verbal")
+    )
+
+    verbal_total=verbal_answers.count()
+
+    verbal_correct=verbal_answers.filter(
+        is_correct=True
+    ).count()
+
+    #--------------------------------
+    # QUANT ANSWERS
+    #--------------------------------
+
+    quant_answers=answers.filter(
+        question__section__name__istartwith= ("quant" or "Quanttitative")
+    )
+
+    quant_total=quant_answers.count()
+
+    quant_correct=quant_answers.filter(
+        is_correct=True
+    ).count()
+
+    #--------------------------------
+    # CALCULATE ACCURACY
+    #--------------------------------
+
+    verbal_accuracy=(
+        verbal_correct/verbal_total
+        if verbal_total>0
+        else 0
+    )
+
+    quant_accuracy=(
+        quant_correct/quant_total
+        if quant_total>0
+        else 0
+    )
+
+    #--------------------------------
+    # TEMPORARY SCORE CONVERSION
+    #--------------------------------
+
+    verbal_score=round(
+        130+(verbal_accuracy*40)
+    )
+
+    quant_score=round(
+        130+(quant_accuracy*40)
+    )
+
+    total_score=verbal_score+quant_score
+
+    #--------------------------------
+    # CREATE TEST RESULT
+    #--------------------------------
+
+    test_result,created=TestResult.objects.update_or_create(
+        user=user,
+        test=test,
+        defaults={
+            "verbal_score":verbal_score,
+            "quant_score":quant_score,
+            "total_score":total_score,
+            "completed_at":timezone.now()
+        }
+    )
+
+    #--------------------------------
+    # RETURN RESULT
+    #--------------------------------
+
+    return JsonResponse({
+        "success":True,
+        "result_id":test_result.id,
+        "verbal_score":verbal_score,
+        "quant_score":quant_score,
+        "total_score":total_score,
+        "verbal_correct":verbal_correct,
+        "verbal_total":verbal_total,
+        "quant_correct":quant_correct,
+        "quant_total":quant_total,
+        "created":created
+    })
+
+
 
 @login_required
 def dashboard(request):
@@ -62,7 +212,7 @@ def dashboard(request):
     if total_answered>0:
         overall_accuracy = round(
             (total_correct/total_answered)*100, 1
-            )
+        )
     else:
         overall_accuracy = 0
 
@@ -251,7 +401,9 @@ def dashboard(request):
                   context
                   )
 
-
+#================================
+#     TEST DATA LOADING
+#================================
 
 def test_data(request, test_id):
 
@@ -336,7 +488,6 @@ def test_data(request, test_id):
 def save_answer(request):
 
     try:
-
         # --------------------------------
         # RECEIVE JSON FROM JAVASCRIPT
         # --------------------------------
@@ -347,13 +498,11 @@ def save_answer(request):
         selected_answer = data.get("selected_answer", [])
         time_taken = data.get("time_taken", 0)
 
-
         # --------------------------------
         # BASIC VALIDATION
         # --------------------------------
 
         if not question_id:
-
             return JsonResponse(
                 {
                     "success": False,
@@ -391,7 +540,7 @@ def save_answer(request):
                 user = request.user,
                 question = question
             ).delete()
-            
+
             return JsonResponse({
                 "success": True,
                 "cleared": True,
@@ -419,32 +568,25 @@ def save_answer(request):
             # --------------------------------
 
             if isinstance(selected_answer, list):
-
                 selected_values = selected_answer
-
             elif selected_answer in [None, ""]:
-
                 selected_values = []
-
             else:
                 selected_values = [
                     selected_answer
                 ]
-
 
             # --------------------------------
             # VALIDATE CHOICES
             # --------------------------------
 
             valid_choice_texts = set(
-
                 Choice.objects.filter(
                     question=question
                 ).values_list(
                     "text",
                     flat=True
                 )
-
             )
 
             for answer_text in selected_values:
@@ -465,7 +607,6 @@ def save_answer(request):
             # --------------------------------
 
             correct_answers = set(
-
                 Choice.objects.filter(
                     question=question,
                     is_correct=True
@@ -473,9 +614,7 @@ def save_answer(request):
                     "text",
                     flat=True
                 )
-
             )
-
 
             # --------------------------------
             # COMPARE ANSWERS
@@ -497,11 +636,7 @@ def save_answer(request):
 
         elif question_type == "text-completion":
 
-            if not isinstance(
-                selected_answer,
-                list
-            ):
-
+            if not isinstance(selected_answer, list):
                 return JsonResponse(
                     {
                         "success": False,
@@ -513,40 +648,26 @@ def save_answer(request):
                     status=400
                 )
 
-
-            blanks = list(
-
-                question.blanks
-                .prefetch_related("choices")
+            blanks = list(question.blanks.prefetch_related("choices")
                 .order_by("order")
-
             )
-
 
             # Student must have one position
             # for each blank
-            if len(selected_answer) != len(blanks):
 
+            if len(selected_answer) != len(blanks):
                 is_correct = False
 
             else:
-
                 is_correct = True
 
-
                 for index, blank in enumerate(blanks):
-
-                    student_choice = (
-                        selected_answer[index]
-                    )
-
+                    student_choice = (selected_answer[index])
 
                     # Blank still unanswered
                     if not student_choice:
-
                         is_correct = False
                         break
-
 
                     # Make sure the submitted text
                     # belongs to THIS blank
@@ -558,10 +679,8 @@ def save_answer(request):
 
 
                     if not valid_choice:
-
                         is_correct = False
                         break
-
 
                     correct_choice = (
                         blank.choices.filter(
@@ -569,16 +688,13 @@ def save_answer(request):
                         ).first()
                     )
 
-
                     if (
                         correct_choice is None
                         or correct_choice.text
                         != student_choice
                     ):
-
                         is_correct = False
                         break
-
 
         # ==========================================
         # NUMERIC ENTRY
@@ -594,13 +710,11 @@ def save_answer(request):
                     str(selected_answer)
                 )
 
-
                 numeric_answer = (
                     NumericValue.objects.get(
                         question=question
                     )
                 )
-
 
                 is_correct = (
                     student_value
@@ -614,7 +728,6 @@ def save_answer(request):
                 TypeError,
                 NumericValue.DoesNotExist
             ):
-
                 is_correct = False
 
 
@@ -623,7 +736,6 @@ def save_answer(request):
         # ==========================================
 
         else:
-
             return JsonResponse(
                 {
                     "success": False,
@@ -634,7 +746,6 @@ def save_answer(request):
                 },
                 status=400
             )
-
 
         # ==========================================
         # SAVE / UPDATE POSTGRESQL
