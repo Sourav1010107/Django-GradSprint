@@ -369,6 +369,34 @@ def save_answer(request):
 
         question_type = question.question_type
 
+        #=================================
+        #        EMPTY ANSWER
+        #=================================
+
+        is_empty = (
+            selected_answer is None
+            or selected_answer == ""
+            or selected_answer == []
+            or (
+                isinstance(selected_answer, list)
+                and all(
+                    value in [None, ""]
+                    for value in selected_answer
+                )
+            )
+        )
+
+        if is_empty:
+            StudentAnswer.objects.filter(
+                user = request.user,
+                question = question
+            ).delete()
+            
+            return JsonResponse({
+                "success": True,
+                "cleared": True,
+            })
+        
         is_correct = False
 
 
