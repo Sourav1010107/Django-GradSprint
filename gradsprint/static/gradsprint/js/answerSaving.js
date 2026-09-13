@@ -1,3 +1,5 @@
+
+
 function getCSRFToken(){
     const cookies=document.cookie.split(";");
 
@@ -14,11 +16,13 @@ function getCSRFToken(){
     return null;
 }
 
+
 async function generateTestResult(){
+   
     if(!greTest){
         return;
     }
-
+    
     try{
         const response=await fetch(
             `/api/test/${greTest.id}/generate-result/`,
@@ -39,10 +43,11 @@ async function generateTestResult(){
             );
             return;
         }
-
+        
         console.log(
             "Test result generated:",
             data
+            
         );
 
         return data;
@@ -53,7 +58,10 @@ async function generateTestResult(){
             error
         );
     }
+    
 }
+
+
 
 async function saveCurrentAnswer() {
 

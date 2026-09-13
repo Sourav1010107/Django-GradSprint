@@ -467,6 +467,8 @@ function confirmSectionExit(){
     secExit.classList.remove("hidden");
 }
 
+
+
 async function finishSection() {
     await saveCurrentAnswer();
 
@@ -506,7 +508,8 @@ async function finishTest() {
 
     clearInterval(timer);
     timer = null;
-    const result = await generateTestResult();
+
+    await generateTestResult();
     closeTestExit();
 
     alert("Test Completed.");

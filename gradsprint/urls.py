@@ -14,5 +14,7 @@ urlpatterns = [
 
     path("test/<int:test_id>/", views.test_data, name="test_data"),
     path("save-answer/", views.save_answer, name="save_answer"),
-    path("test/<int:test_id>/generate-result", views.generate_test_result_view, name="generate_test_result"),
+    path("test/<int:test_id>/generate-result/", views.generate_test_result_view, name="generate_test_result"),
 ]
+
+
