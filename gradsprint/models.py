@@ -96,13 +96,13 @@ class BlankChoice(models.Model):
         return self.text
 
 class NumericValue(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name="numeric_value")
+    question = models.OneToOneField(Question, on_delete=models.CASCADE, related_name="numeric_value")
     correct_value = models.DecimalField(max_digits=12, decimal_places=2, default= 0 )
 
     def __str__(self):
         return str(self.correct_value)
 
-
+    
 
 class StudentAnswer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="student_answers")

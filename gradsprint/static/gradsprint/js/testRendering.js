@@ -302,7 +302,7 @@ function renderSection() {
     //-------CALCULATOR BUTTON AVAILABILITY--------
     const nameSection = greTest.sections[currentSection].name;
 
-    if ((nameSection === "Quantitative Reasoning 1")||(nameSection === "Quantitative Reasoning 2")) {
+    if ((nameSection === "Quantitative Reasoning 1")||(nameSection === "Quantitative Reasoning 2") || (nameSection === "Quantitative Reasoning 3")) {
         document.querySelector('#calculator-button').classList.remove("hidden");
     }else{
         document.querySelector('#calculator-button').classList.add("hidden");
@@ -352,7 +352,7 @@ function questionEnv() {
     
         
 
-    if (questions[currentQuestion].type !== "reading-single") {
+    if ((questions[currentQuestion].type !== "reading-single") && (questions[currentQuestion].type !== "reading-multiple")) {
 
         // Hide passage
         passageContainer.style.display = "none";
@@ -520,6 +520,6 @@ async function finishTest() {
 //-----------------------------------
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    loadTest(2);
+    loadTest(4);
     
 });

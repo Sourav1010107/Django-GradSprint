@@ -1,0 +1,575 @@
+{
+  "test_name": "GRE Practice Test 1",
+  "section": {
+    "name": "Quantitative Reasoning 2",
+    "time": 26,
+    "order": 4,
+    "questions": [
+      {
+        "order": 1,
+        "topic": "arithmetic",
+        "subtopic": "arithmetic-percentages",
+        "expected_time_seconds": 75,
+        "question_type": "quant-single",
+        "difficulty": "medium",
+        "question": "A jacket originally priced at $240 is discounted by 25%. What is the sale price?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The discount is 25% of 240, or 60. Therefore, the sale price is 240 - 60 = 180.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "$160",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "$170",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "$180",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "$190",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "$200",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 2,
+        "topic": "arithmetic",
+        "subtopic": "arithmetic-ratios-proportions",
+        "expected_time_seconds": 90,
+        "question_type": "quant-single",
+        "difficulty": "medium",
+        "question": "The ratio of red marbles to blue marbles in a box is 3:5. If there are 24 red marbles, how many blue marbles are there?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "If 3 parts equal 24, one part equals 8. Therefore, 5 parts equal 40.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "32",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "36",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "40",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "45",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "48",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 3,
+        "topic": "arithmetic",
+        "subtopic": "arithmetic-number-properties",
+        "expected_time_seconds": 90,
+        "question_type": "quant-multiple",
+        "difficulty": "hard",
+        "question": "If n is a positive integer divisible by 12, which of the following must also divide n?",
+        "instruction": "Select all that apply.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "Since 12 is divisible by both 3 and 4, every multiple of 12 is divisible by 3 and 4. It need not be divisible by 8.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "3",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "4",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "8",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 4,
+        "topic": "algebra",
+        "subtopic": "algebra-linear-equations",
+        "expected_time_seconds": 75,
+        "question_type": "quant-single",
+        "difficulty": "medium",
+        "question": "If 3x + 7 = 25, what is the value of x?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "Subtracting 7 gives 3x = 18, so x = 6.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "4",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "5",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "6",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "8",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 5,
+        "topic": "algebra",
+        "subtopic": "algebra-quadratic-equations",
+        "expected_time_seconds": 105,
+        "question_type": "quant-multiple",
+        "difficulty": "hard",
+        "question": "If x² - 5x + 6 = 0, which of the following are possible values of x?",
+        "instruction": "Select all that apply.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The equation factors as (x - 2)(x - 3) = 0. Therefore, x = 2 or x = 3.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "1",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "2",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "3",
+            "is_correct": true
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 6,
+        "topic": "algebra",
+        "subtopic": "algebra-linear-equations",
+        "expected_time_seconds": 75,
+        "question_type": "numeric-entry",
+        "difficulty": "medium",
+        "question": "If 4x - 7 = 21, what is the value of x?",
+        "instruction": "Enter your answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "Adding 7 gives 4x = 28. Therefore, x = 7.",
+        "choices": [],
+        "blanks": [],
+        "numeric_value": 7
+      },
+      {
+        "order": 7,
+        "topic": "arithmetic",
+        "subtopic": "arithmetic-averages",
+        "expected_time_seconds": 90,
+        "question_type": "quantitative-comparison",
+        "difficulty": "medium",
+        "question": "The average of 5 numbers is 18.",
+        "instruction": "Compare Quantity A and Quantity B.",
+        "quantity_a": "The sum of the 5 numbers",
+        "quantity_b": "90",
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The sum is average multiplied by the number of values: 18 × 5 = 90. Therefore, the two quantities are equal.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "Quantity A is greater.",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "Quantity B is greater.",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "The two quantities are equal.",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "The relationship cannot be determined from the information given.",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 8,
+        "topic": "geometry",
+        "subtopic": "geometry-lines-angles",
+        "expected_time_seconds": 90,
+        "question_type": "quant-single",
+        "difficulty": "medium",
+        "question": "Two supplementary angles have measures 3x degrees and 2x degrees. What is the measure of the larger angle?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "Supplementary angles sum to 180 degrees. Thus 3x + 2x = 180, so x = 36. The larger angle is 3 × 36 = 108 degrees.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "72°",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "90°",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "108°",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "120°",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "144°",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 9,
+        "topic": "geometry",
+        "subtopic": "geometry-triangles",
+        "expected_time_seconds": 105,
+        "question_type": "quantitative-comparison",
+        "difficulty": "hard",
+        "question": "A triangle has side lengths 5, 7, and x, where x is a positive integer.",
+        "instruction": "Compare Quantity A and Quantity B.",
+        "quantity_a": "x",
+        "quantity_b": "10",
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The triangle inequality gives 2 < x < 12. Since x can be less than 10, equal to 10, or greater than 10, the relationship cannot be determined.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "Quantity A is greater.",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "Quantity B is greater.",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "The two quantities are equal.",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "The relationship cannot be determined from the information given.",
+            "is_correct": true
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 10,
+        "topic": "geometry",
+        "subtopic": "geometry-circles",
+        "expected_time_seconds": 75,
+        "question_type": "numeric-entry",
+        "difficulty": "medium",
+        "question": "A circle has radius 6. What is the diameter of the circle?",
+        "instruction": "Enter your answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The diameter is twice the radius: 2 × 6 = 12.",
+        "choices": [],
+        "blanks": [],
+        "numeric_value": 12
+      },
+      {
+        "order": 11,
+        "topic": "data-analysis",
+        "subtopic": "data-mean-median-mode",
+        "expected_time_seconds": 75,
+        "question_type": "quant-single",
+        "difficulty": "medium",
+        "question": "What is the median of 4, 7, 9, 12, and 18?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The numbers are already in increasing order. The middle value is 9.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "7",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "8",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "9",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "10",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "12",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 12,
+        "topic": "data-analysis",
+        "subtopic": "data-probability",
+        "expected_time_seconds": 90,
+        "question_type": "quant-single",
+        "difficulty": "hard",
+        "question": "A fair six-sided die is rolled once. What is the probability that the result is greater than 4?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The favorable outcomes are 5 and 6. Therefore, the probability is 2/6 = 1/3.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "1/6",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "1/4",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "1/3",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "1/2",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "2/3",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 13,
+        "topic": "data-analysis",
+        "subtopic": "data-interpretation",
+        "expected_time_seconds": 105,
+        "question_type": "data-interpretation-single",
+        "difficulty": "hard",
+        "question": "According to the graph, in which year was Company A's revenue greatest?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": "quant/section_1/q13_company_revenue.png",
+        "explanation": "The graph shows that Company A's greatest revenue occurred in 2025.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "2021",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "2022",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "2023",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "2024",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "2025",
+            "is_correct": true
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 14,
+        "topic": "data-analysis",
+        "subtopic": "data-mean-median-mode",
+        "expected_time_seconds": 120,
+        "question_type": "quant-multiple",
+        "difficulty": "very-hard",
+        "question": "A data set has mean 20. Which of the following changes would necessarily increase the mean?",
+        "instruction": "Select all that apply.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "Adding a value greater than the current mean increases the mean. Increasing every value by 2 also increases the mean by 2. Adding a value equal to the current mean leaves the mean unchanged.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "Add a new value equal to 30.",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "Increase every value in the data set by 2.",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "Add a new value equal to 20.",
+            "is_correct": false
+          }
+        ],
+        "blanks": []
+      },
+      {
+        "order": 15,
+        "topic": "mixed",
+        "subtopic": "mixed-multiple-topics",
+        "expected_time_seconds": 120,
+        "question_type": "quantitative-comparison",
+        "difficulty": "very-hard",
+        "question": "x and y are positive integers and xy = 36.",
+        "instruction": "Compare Quantity A and Quantity B.",
+        "quantity_a": "x + y",
+        "quantity_b": "12",
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "If x = 6 and y = 6, Quantity A equals 12. If x = 4 and y = 9, Quantity A equals 13. If x = 3 and y = 12, Quantity A equals 15. Therefore, Quantity A can equal or exceed Quantity B, so the relationship cannot be determined from the information given.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "Quantity A is greater.",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "Quantity B is greater.",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "The two quantities are equal.",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "The relationship cannot be determined from the information given.",
+            "is_correct": true
+          }
+        ],
+        "blanks": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,641 @@
+{
+  "test_name": "GRE Practice Test 2",
+  "section": {
+    "name": "Verbal Reasoning 2",
+    "time": 1380,
+    "order": 4,
+    "questions": [
+      {
+        "order": 1,
+        "question_type": "text-completion",
+        "topic": "text-completion",
+        "subtopic": "tc-logic",
+        "difficulty": "medium",
+        "expected_time_seconds": 90,
+        "instruction": "For each blank select one entry from the corresponding column of choices.",
+        "question": "Because the committee's report was deliberately _____, both supporters and critics could cite it as evidence for their positions.",
+        "explanation": "The sentence requires a word meaning open to more than one interpretation; 'ambiguous' fits the contrast created by both sides using the report.",
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {
+                "order": 1,
+                "text": "ambiguous",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "prescriptive",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "exhaustive",
+                "is_correct": false
+              },
+              {
+                "order": 4,
+                "text": "technical",
+                "is_correct": false
+              },
+              {
+                "order": 5,
+                "text": "unanimous",
+                "is_correct": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "question_type": "sentence-equivalence",
+        "topic": "sentence-equivalence",
+        "subtopic": "se-vocabulary",
+        "difficulty": "easy",
+        "expected_time_seconds": 75,
+        "instruction": "Select the two answer choices that, when used to complete the sentence, fit the meaning of the sentence as a whole and produce completed sentences that are alike in meaning.",
+        "question": "Although the lecturer was known for intricate arguments, her summary of the central claim was remarkably _____.",
+        "explanation": "The contrast with intricate arguments calls for words meaning clear and easy to understand: lucid and perspicuous.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "lucid",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "ornate",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "tentative",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "perspicuous",
+            "is_correct": true
+          },
+          {
+            "order": 5,
+            "text": "verbose",
+            "is_correct": false
+          },
+          {
+            "order": 6,
+            "text": "elliptical",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "question_type": "text-completion",
+        "topic": "text-completion",
+        "subtopic": "tc-logic",
+        "difficulty": "hard",
+        "expected_time_seconds": 105,
+        "instruction": "For each blank select one entry from the corresponding column of choices.",
+        "question": "The critic's admiration for the novel was not (i) _____; she praised its structural ingenuity while remaining (ii) _____ about its sentimental ending.",
+        "explanation": "The second clause shows qualified rather than unreserved praise: admiration was not unqualified, and she remained skeptical.",
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {
+                "order": 1,
+                "text": "unqualified",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "reluctant",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "unexpected",
+                "is_correct": false
+              }
+            ]
+          },
+          {
+            "order": 2,
+            "choices": [
+              {
+                "order": 1,
+                "text": "skeptical",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "indifferent",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "ecstatic",
+                "is_correct": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "order": 4,
+        "question_type": "reading-single",
+        "topic": "reading-comprehension",
+        "subtopic": "rc-main-purpose",
+        "difficulty": "medium",
+        "expected_time_seconds": 95,
+        "instruction": "Select one answer choice.",
+        "question": "The passage is primarily concerned with",
+        "explanation": "The passage revises a simple view of urban parks and emphasizes the distinction between observed diversity and conservation function.",
+        "passage": "Ecologists once treated urban parks as biologically impoverished fragments, useful chiefly as refuges for species displaced by development. Recent studies complicate that view. Some small parks support unexpectedly diverse insect communities, not because they reproduce rural habitats, but because they contain a mosaic of microenvironments created by irrigation, ornamental plantings, masonry, and frequent disturbance. Yet diversity alone can mislead: a park rich in transient species may contribute less to long-term conservation than a less diverse site that sustains breeding populations. Thus, researchers increasingly distinguish between the number of species observed and the ecological functions a site actually supports.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "arguing that urban parks should replace rural conservation areas",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "explaining why species counts alone may not indicate the conservation value of urban parks",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "showing that small parks invariably contain more insect species than large parks",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "criticizing researchers for overlooking ornamental plantings in urban parks",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "demonstrating that transient species are harmful to breeding populations",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 5,
+        "question_type": "reading-multiple",
+        "topic": "reading-comprehension",
+        "subtopic": "rc-detail",
+        "difficulty": "hard",
+        "expected_time_seconds": 110,
+        "instruction": "Consider each statement separately and select all that apply.",
+        "question": "According to the passage, which of the following can contribute to the variety of microenvironments in small urban parks?",
+        "explanation": "The passage explicitly names irrigation, ornamental plantings, masonry, and disturbance; the listed correct choices are drawn from those factors.",
+        "passage_ref_order": 4,
+        "choices": [
+          {
+            "order": 1,
+            "text": "Irrigation practices",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "Ornamental plantings",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "Uniform absence of disturbance",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "question_type": "reading-single",
+        "topic": "reading-comprehension",
+        "subtopic": "rc-inference",
+        "difficulty": "medium",
+        "expected_time_seconds": 120,
+        "instruction": "Select one answer choice.",
+        "question": "Which of the following is most strongly supported by the passage?",
+        "explanation": "Because transient species can inflate observed diversity, a lower-diversity park can have greater conservation value if it supports breeding populations.",
+        "passage": "For many years, biologists assumed that an animal’s ability to survive changes in temperature depended mainly on physiological adaptations acquired over generations. Recent research, however, suggests that behavior can also play an important role. Some lizards, for example, respond to unusually high temperatures by spending more time in shaded areas or becoming active during cooler parts of the day. Such behavioral adjustments can reduce immediate exposure to heat without requiring physiological change. Nevertheless, researchers caution that behavioral flexibility has limits: if suitable shelters disappear or temperatures remain extreme for prolonged periods, behavioral adjustments alone may be insufficient.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "Behavioral adjustments can help some animals cope with temperature changes even without physiological adaptation.",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "Animals that alter their daily activity patterns can survive indefinitely under extremely high temperatures.",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "Physiological adaptations are generally less effective than behavioral adjustments in protecting animals from heat.",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "Lizards rely on behavioral adjustments only when physiological adaptations have failed.",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "Behavioral flexibility enables animals to survive temperature changes even when suitable shelters are unavailable.",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 7,
+        "question_type": "sentence-equivalence",
+        "topic": "sentence-equivalence",
+        "subtopic": "se-logic",
+        "difficulty": "medium",
+        "expected_time_seconds": 80,
+        "instruction": "Select the two answer choices that, when used to complete the sentence, fit the meaning of the sentence as a whole and produce completed sentences that are alike in meaning.",
+        "question": "The apparent simplicity of the device is _____: beneath its plain exterior lies an unusually complex control system.",
+        "explanation": "The colon explains that the simple appearance gives a false impression; deceptive and misleading are equivalent.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "deceptive",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "austere",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "misleading",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "inevitable",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "incidental",
+            "is_correct": false
+          },
+          {
+            "order": 6,
+            "text": "transparent",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 8,
+        "question_type": "text-completion",
+        "topic": "text-completion",
+        "subtopic": "tc-vocabulary",
+        "difficulty": "easy",
+        "expected_time_seconds": 85,
+        "instruction": "For each blank select one entry from the corresponding column of choices.",
+        "question": "Far from being _____, the biographer's account openly acknowledges the gaps in the surviving evidence.",
+        "explanation": "Open acknowledgment of evidentiary gaps contrasts with being dogmatic or overly certain; 'dogmatic' is the best fit.",
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {
+                "order": 1,
+                "text": "dogmatic",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "meticulous",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "concise",
+                "is_correct": false
+              },
+              {
+                "order": 4,
+                "text": "sympathetic",
+                "is_correct": false
+              },
+              {
+                "order": 5,
+                "text": "chronological",
+                "is_correct": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "order": 9,
+        "question_type": "reading-single",
+        "topic": "reading-comprehension",
+        "subtopic": "rc-main-purpose",
+        "difficulty": "medium",
+        "expected_time_seconds": 95,
+        "instruction": "Select one answer choice.",
+        "question": "The passage primarily serves to",
+        "explanation": "The passage uses railway timekeeping to qualify the idea that standardization simply eliminates local variation.",
+        "passage": "Historians of technology often describe standardization as a force that suppresses local variation. The history of early railway timekeeping suggests a more complicated process. Before uniform railway time, towns commonly set clocks by local solar noon, so neighboring communities could differ by several minutes. Railway companies promoted common time because timetables became difficult to coordinate across expanding networks. Local authorities sometimes resisted the change, but adoption was neither immediate nor complete: for years, public clocks and railway clocks in the same town could display different times. Standardization, then, did not simply erase local practice; it created a period in which competing systems coexisted, forcing people to navigate between them.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "argue that local solar time was more accurate than railway time",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "describe how railway companies compelled all towns to adopt uniform time immediately",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "qualify the claim that standardization simply eliminates local variation",
+            "is_correct": true
+          },
+          {
+            "order": 4,
+            "text": "explain why public clocks were technologically inferior to railway clocks",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "show that local authorities generally welcomed standardized time",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 10,
+        "question_type": "reading-single",
+        "topic": "reading-comprehension",
+        "subtopic": "rc-function-structure",
+        "difficulty": "hard",
+        "expected_time_seconds": 110,
+        "instruction": "Select one answer choice.",
+        "question": "The passage is primarily concerned with",
+        "explanation": "challenging the assumption that broader electoral participation necessarily produces immediate changes in political influence and explaining why its effects may depend on other institutions",
+        "passage_ref_order": 11,
+        "choices": [
+          {
+            "order": 1,
+            "text": "arguing that expansions of voting rights generally fail to alter government policy",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "challenging the assumption that broader electoral participation necessarily produces immediate changes in political influence and explaining why its effects may depend on other institutions",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "demonstrating that organized interest groups exercise greater political influence than electoral majorities in most political systems",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "explaining why newly enfranchised citizens generally lack sufficient information to make rational electoral decisions",
+            "is_correct": false
+          },
+          {
+            "order": 5,
+            "text": "defending institutional explanations of political behavior against explanations based on voters’ economic interests",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 11,
+        "question_type": "reading-multiple",
+        "topic": "reading-comprehension",
+        "subtopic": "rc-detail",
+        "difficulty": "hard",
+        "expected_time_seconds": 105,
+        "instruction": "Consider each statement separately and select all that apply.",
+        "question": "According to the passage, which of the following may limit the extent to which an expansion of voting rights produces corresponding changes in policy?",
+        "explanation": "Both are explicitly supported by the second paragraph. The third statement may be logically conceivable, but the passage does not advance it as an explanation. This distinction between what is plausible generally and what is supported by the passage is characteristic of GRE RC reasoning.",
+        "passage": "Political scientists have often treated the expansion of electoral participation as a mechanism that compels governments to respond more closely to the preferences of the population. This expectation rests partly on a straightforward logic: when political leaders depend on a larger electorate, policies that benefit only a narrow constituency should become more difficult to sustain. Yet historical studies of newly enfranchised electorates complicate this inference. In several cases, an expansion of voting rights altered neither public expenditure nor the distribution of economic benefits as rapidly as the conventional account would predict.\n\nOne explanation emphasizes the institutions through which electoral preferences are translated into policy. An enlarged electorate may change the preferences politicians must consider without proportionately changing the incentives that determine which preferences receive attention. Electoral districts, party nomination procedures, legislative rules, and the concentration of organized interests can enable relatively small groups to exercise influence disproportionate to their numbers. Moreover, newly enfranchised citizens may possess votes without immediately possessing the organizations, information, or political networks necessary to make those votes effective instruments of policy influence.\n\nThese observations do not establish that broader participation is politically inconsequential. Rather, they suggest that enfranchisement should not be regarded as a discrete institutional change whose policy consequences follow automatically. Its effects may instead depend on complementary changes in political organization and in the institutions connecting citizens to policymakers. From this perspective, the important question is not simply whether political participation has expanded, but under what institutional conditions an expansion of participation alters the distribution of political influence.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "Institutional arrangements that allow some groups to exercise influence disproportionate to their numerical size",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "A lack among newly enfranchised citizens of organizations capable of translating electoral participation into political influence",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "The possibility that newly enfranchised citizens have policy preferences identical to those of established voters",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 12,
+        "question_type": "text-completion",
+        "topic": "text-completion",
+        "subtopic": "tc-logic",
+        "difficulty": "very-hard",
+        "expected_time_seconds": 115,
+        "instruction": "For each blank select one entry from the corresponding column of choices.",
+        "question": "The scientist's reputation for (i) _____ made the vehemence of her response especially (ii) _____; colleagues accustomed to her measured judgments were startled by the outburst.",
+        "explanation": "A reputation for restraint makes a vehement response anomalous; 'equanimity' and 'incongruous' capture the logic.",
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {
+                "order": 1,
+                "text": "equanimity",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "verbosity",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "impulsiveness",
+                "is_correct": false
+              }
+            ]
+          },
+          {
+            "order": 2,
+            "choices": [
+              {
+                "order": 1,
+                "text": "incongruous",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "predictable",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "restrained",
+                "is_correct": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "order": 13,
+        "question_type": "sentence-equivalence",
+        "topic": "sentence-equivalence",
+        "subtopic": "se-vocabulary",
+        "difficulty": "hard",
+        "expected_time_seconds": 85,
+        "instruction": "Select the two answer choices that, when used to complete the sentence, fit the meaning of the sentence as a whole and produce completed sentences that are alike in meaning.",
+        "question": "Because the archive contains only scattered correspondence, any account of the negotiations must remain _____.",
+        "explanation": "Scattered evidence makes an account incomplete; fragmentary and partial produce equivalent meanings.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "definitive",
+            "is_correct": false
+          },
+          {
+            "order": 2,
+            "text": "fragmentary",
+            "is_correct": true
+          },
+          {
+            "order": 3,
+            "text": "exhaustive",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "partial",
+            "is_correct": true
+          },
+          {
+            "order": 5,
+            "text": "dogmatic",
+            "is_correct": false
+          },
+          {
+            "order": 6,
+            "text": "unassailable",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "order": 14,
+        "question_type": "text-completion",
+        "topic": "text-completion",
+        "subtopic": "tc-logic",
+        "difficulty": "medium",
+        "expected_time_seconds": 100,
+        "instruction": "For each blank select one entry from the corresponding column of choices.",
+        "question": "The new evidence did not (i) _____ the prevailing theory so much as (ii) _____ its domain: the theory remained useful, but only under a narrower set of conditions.",
+        "explanation": "The theory remains useful, so the evidence did not invalidate it; instead it restricted its domain.",
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {
+                "order": 1,
+                "text": "invalidate",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "popularize",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "clarify",
+                "is_correct": false
+              }
+            ]
+          },
+          {
+            "order": 2,
+            "choices": [
+              {
+                "order": 1,
+                "text": "restricted",
+                "is_correct": true
+              },
+              {
+                "order": 2,
+                "text": "expanded",
+                "is_correct": false
+              },
+              {
+                "order": 3,
+                "text": "ignored",
+                "is_correct": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "order": 15,
+        "question_type": "sentence-equivalence",
+        "topic": "sentence-equivalence",
+        "subtopic": "se-logic",
+        "difficulty": "easy",
+        "expected_time_seconds": 75,
+        "instruction": "Select the two answer choices that, when used to complete the sentence, fit the meaning of the sentence as a whole and produce completed sentences that are alike in meaning.",
+        "question": "The editor removed several digressions, making the essay more _____ without altering its central argument.",
+        "explanation": "Removing digressions makes writing more concise; concise and succinct are equivalent.",
+        "choices": [
+          {
+            "order": 1,
+            "text": "concise",
+            "is_correct": true
+          },
+          {
+            "order": 2,
+            "text": "ornamental",
+            "is_correct": false
+          },
+          {
+            "order": 3,
+            "text": "ambiguous",
+            "is_correct": false
+          },
+          {
+            "order": 4,
+            "text": "succinct",
+            "is_correct": true
+          },
+          {
+            "order": 5,
+            "text": "speculative",
+            "is_correct": false
+          },
+          {
+            "order": 6,
+            "text": "repetitious",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  }
+}

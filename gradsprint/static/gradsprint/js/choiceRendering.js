@@ -1,125 +1,165 @@
 //--------------------------
-//       CHOICES  
+//       CHOICES
 //--------------------------
 
 function renderChoices(){
 
-    if (questions[currentQuestion].type === "sentence-equivalence") {
+    clearChoiceContainers();
+
+    const question=questions[currentQuestion];
+    const type=question.type;
+
+    if(type==="sentence-equivalence"){
         renderSentenceEquivalence();
     }
-    else if(questions[currentQuestion].type === "text-completion"){
+    else if(type==="text-completion"){
         renderTextCompletion();
     }
-    else if(questions[currentQuestion].type === "reading-single"){
-        renderReadingPassage();
+    else if(type==="reading-single"){
+        renderReadingSingle();
+    }
+    else if(type==="reading-multiple"){
+        renderReadingMultiple();
     }
     else{
         renderQuantChoices();
     }
+
+    renderRegularQuestionImage();
 }
 
+
+//------------------------------
+//     CLEAR OLD CONTENT
+//------------------------------
+
+function clearChoiceContainers(){
+
+    const choices=document.querySelector("#choices");
+    const passage=document.querySelector("#passage");
+    const image=document.querySelector("#image");
+    const questionImage=document.querySelector("#qs-image");
+    const quantA=document.querySelector("#quantity-a");
+    const quantB=document.querySelector("#quantity-b");
+    const quantComparison=document.querySelector("#quantity-comparison");
+
+    choices.innerHTML="";
+    passage.innerHTML="";
+    image.innerHTML="";
+    questionImage.innerHTML="";
+    quantA.innerHTML="";
+    quantB.innerHTML="";
+
+    quantComparison.style.display="none";
+}
+
+
 //----------------------------------
-//       SENTENCE EQUIVALENCE  
+//     SENTENCE EQUIVALENCE
 //----------------------------------
 
 function renderSentenceEquivalence(){
 
-    let container = document.querySelector('#choices');
-    let containerPassage = document.querySelector('#passage');
-    container.innerHTML= "";
-    containerPassage.innerHTML = "";
+    const container=document.querySelector("#choices");
+    const question=questions[currentQuestion];
 
-    questions[currentQuestion].choices.forEach((choice)=>{
-        const checkbox = document.createElement('input');
-        const label = document.createElement('label');
-        const linebreak = document.createElement('br');
+    if(!Array.isArray(answers[currentQuestion])){
+        answers[currentQuestion]=[];
+    }
 
-        checkbox.type= "checkbox";
-        checkbox.value= choice;
+    question.choices.forEach(choice=>{
 
-        // creating the checkbox element prop.
+        const checkbox=document.createElement("input");
+        const label=document.createElement("label");
+        const linebreak=document.createElement("br");
+
+        checkbox.type="checkbox";
+        checkbox.value=choice;
+
+        checkbox.checked=answers[currentQuestion].includes(choice);
+
         label.append(checkbox);
-        label.append(' '+ choice);
+        label.append(" "+choice);
 
-        // loading the saved answers in the question paper
-        checkbox.checked = answers[currentQuestion].includes(choice);
+        checkbox.addEventListener("change",()=>{
 
-        // save the choice in the answer array
-        checkbox.addEventListener("change", ()=>{
+            if(checkbox.checked){
 
-            if(answers[currentQuestion].length >= 2){
-                checkbox.checked = false;
-            }
-            if (checkbox.checked) {
-                if (!answers[currentQuestion].includes(choice)) {
+                if(
+                    answers[currentQuestion].length>=2 &&
+                    !answers[currentQuestion].includes(choice)
+                ){
+                    checkbox.checked=false;
+                    return;
+                }
+
+                if(!answers[currentQuestion].includes(choice)){
                     answers[currentQuestion].push(choice);
                 }
             }
             else{
-                answers[currentQuestion] = answers[currentQuestion].filter(
-                    savedChoice => savedChoice != choice
+                answers[currentQuestion]=answers[currentQuestion].filter(
+                    savedChoice=>savedChoice!==choice
                 );
             }
-                
         });
-    
-        // add choices in the HTML element
+
         container.append(label);
         container.append(linebreak);
-
     });
 }
 
+
 //------------------------------
-//       TEXT-COMPLETION
+//       TEXT COMPLETION
 //------------------------------
 
 function renderTextCompletion(){
 
-    let container = document.querySelector('#choices');
-    let containerPassage = document.querySelector('#passage');
-    
-    container.innerHTML= "";
-    containerPassage.innerHTML = "";
+    const container=document.querySelector("#choices");
+    const question=questions[currentQuestion];
 
-    questions[currentQuestion].blanks.forEach((blank, index)=>{
+    if(!Array.isArray(answers[currentQuestion])){
+        answers[currentQuestion]=[];
+    }
 
-        const table = document.createElement('table');
-        const  th =  document.createElement('th');
-        const hrow = document.createElement('tr');
+    question.blanks.forEach((blank,index)=>{
 
-        th.textContent = `Blank ${index +1}`;
-        hrow.append(th);
-        table.append(hrow);
+        const table=document.createElement("table");
+        const headerRow=document.createElement("tr");
+        const th=document.createElement("th");
 
-        blank.choices.forEach((choice)=>{
-            const row = document.createElement('tr');
-            const td = document.createElement('td');
-            const label = document.createElement('label');
-            const radio = document.createElement('input');
+        th.textContent=`Blank ${index+1}`;
 
-            radio.type = "radio";
-            radio.name = `Blank ${index +1}`;
-            radio.value = choice;
+        headerRow.append(th);
+        table.append(headerRow);
+
+        blank.choices.forEach(choice=>{
+
+            const row=document.createElement("tr");
+            const td=document.createElement("td");
+            const label=document.createElement("label");
+            const radio=document.createElement("input");
+
+            radio.type="radio";
+            radio.name=`blank-${currentQuestion}-${index}`;
+            radio.value=choice;
+
+            if(answers[currentQuestion][index]===choice){
+                radio.checked=true;
+            }
 
             label.append(radio);
-            label.append(' '+ choice)
+            label.append(" "+choice);
 
             td.append(label);
             row.append(td);
             table.append(row);
 
-            // reload answer
-            if (answers[currentQuestion][index]=== choice) {
-                radio.checked = true;
-            }
-
-            // make entire row clickable and save answer
-            row.addEventListener("click", ()=>{
-                radio.checked = true;
-                answers[currentQuestion][index] = choice; // save answer
-            });           
-
+            row.addEventListener("click",()=>{
+                radio.checked=true;
+                answers[currentQuestion][index]=choice;
+            });
         });
 
         table.classList.add("tc-table");
@@ -127,262 +167,343 @@ function renderTextCompletion(){
     });
 }
 
+
 //------------------------------
-//    READING PASSAGE
+//       READING PASSAGE
 //------------------------------
 
-function renderReadingPassage(){
+function renderPassage(){
 
-    let containerChoice = document.querySelector('#choices');
-    let containerPassage = document.querySelector('#passage');
+    const container=document.querySelector("#passage");
+    const question=questions[currentQuestion];
 
-    containerPassage.innerHTML = "";
-    containerChoice.innerHTML = "";
+    if(question.passage){
+        container.innerHTML=question.passage;
+        return;
+    }
 
-    questions[currentQuestion].choices.forEach((choice)=>{
+    if(
+        question.passageRef!==null &&
+        question.passageRef!==undefined
+    ){
+        const passageQuestion=questions.find(
+            item=>Number(item.id)===Number(question.passageRef)
+        );
 
-        const label = document.createElement('label');
-        const radio = document.createElement('input');
-        const linebreak = document.createElement('br');
-
-        radio.type = "radio";
-        radio.name = "passage";
-        radio.value = choice;
-
-        label.append(radio);
-        label.append(' '+ choice);
-
-        containerChoice.append(label);
-        containerChoice.append(linebreak);
-
-        // reload answer
-        if (answers[currentQuestion] === choice) {
-            radio.checked = true;
+        if(passageQuestion && passageQuestion.passage){
+            container.innerHTML=passageQuestion.passage;
         }
-
-        // save answer
-        radio.addEventListener("click", ()=>{
-            radio.checked = true;
-            answers[currentQuestion] = choice; // save answer
-        });
-    });
-    // loading reference passage
-    //const loadingquestionNo = questions[currentQuestion].passageRef-1;
-    const passageRef = questions[currentQuestion].passageRef;
-
-    const passageQuestion = questions.find(
-        question=> question.id === passageRef
-    );
-    if (passageQuestion) {
-        containerPassage.innerHTML = passageQuestion.passage;
     }
 }
 
-//--------------------------------------
-//        QUANTATIVE QUESTION
-//--------------------------------------
 
-function renderQuantChoices() {
+//------------------------------
+//       READING SINGLE
+//------------------------------
 
-    let container = document.querySelector('#choices');
-    let containerPassage = document.querySelector('#passage');
-    let containerImage = document.querySelector('#image');
+function renderReadingSingle(){
 
-    container.innerHTML= "";
-    containerPassage.innerHTML = "";
-    containerImage.innerHTML = "";
+    const container=document.querySelector("#choices");
+    const question=questions[currentQuestion];
 
-    // --------------------------------
-    // SINGLE ANSWER
-    // --------------------------------
+    renderPassage();
 
-    if (questions[currentQuestion].type === "quant-single") {
+    question.choices.forEach(choice=>{
 
-        questions[currentQuestion].choices.forEach((choice)=>{
+        const label=document.createElement("label");
+        const radio=document.createElement("input");
+        const linebreak=document.createElement("br");
 
-            const label = document.createElement('label');
-            const radio = document.createElement('input');
-            const linebreak = document.createElement('br');
+        radio.type="radio";
+        radio.name=`reading-${currentQuestion}`;
+        radio.value=choice;
 
-            radio.type = "radio";
-            radio.name = "comparison";
-            radio.value = choice;
-
-            label.append(radio);
-            label.append(' '+ choice);
-
-            // reload answer
-            if (answers[currentQuestion] === choice) {
-                radio.checked = true;
-            }
-
-            container.append(label);
-            container.append(linebreak);
-
-            // save answer
-            radio.addEventListener("click", ()=>{
-                radio.checked = true;
-                answers[currentQuestion] = choice; // save answer
-            });
-        
-        });
-    }
-
-    
-    else if (questions[currentQuestion].type === "data-interpretation-single") {
-
-        questions[currentQuestion].choices.forEach((choice)=>{
-
-            const label = document.createElement('label');
-            const radio = document.createElement('input');
-            const linebreak = document.createElement('br');
-
-            radio.type = "radio";
-            radio.name = "comparison";
-            radio.value = choice;
-
-            label.append(radio);
-            label.append(' '+ choice);
-
-            // reload answer
-            if (answers[currentQuestion] === choice) {
-                radio.checked = true;
-            }
-
-            container.append(label);
-            container.append(linebreak);
-
-            // save answer
-            radio.addEventListener("click", ()=>{
-                radio.checked = true;
-                answers[currentQuestion] = choice;
-            });      
-        });
-        //passage_ref is used both for passage and image ref.
-        const passageRef = questions[currentQuestion].passageRef;
-
-        const passageQuestion = questions.find(
-            question=> Number(question.id) === Number(passageRef)
-        );
-
-        if (passageQuestion && passageQuestion.image) {
-
-            const img = document.createElement("img");
-
-            img.src = passageQuestion.image;
-            containerImage.append(img);
+        if(answers[currentQuestion]===choice){
+            radio.checked=true;
         }
+
+        label.append(radio);
+        label.append(" "+choice);
+
+        radio.addEventListener("change",()=>{
+            if(radio.checked){
+                answers[currentQuestion]=choice;
+            }
+        });
+
+        container.append(label);
+        container.append(linebreak);
+    });
+}
+
+
+//------------------------------
+//      READING MULTIPLE
+//------------------------------
+
+function renderReadingMultiple(){
+
+    const container=document.querySelector("#choices");
+    const question=questions[currentQuestion];
+
+    renderPassage();
+
+    if(!Array.isArray(answers[currentQuestion])){
+        answers[currentQuestion]=[];
     }
 
-    // --------------------------------
-    // MULTIPLE ANSWERS
-    // --------------------------------
+    question.choices.forEach(choice=>{
 
-    else if (questions[currentQuestion].type === "quant-multiple") {
+        const checkbox=document.createElement("input");
+        const label=document.createElement("label");
+        const linebreak=document.createElement("br");
 
-        questions[currentQuestion].choices.forEach((choice)=>{
-            const checkbox = document.createElement('input');
-            const label = document.createElement('label');
-            const linebreak = document.createElement('br');
+        checkbox.type="checkbox";
+        checkbox.value=choice;
 
-            checkbox.type= "checkbox";
-            checkbox.value= choice;
+        checkbox.checked=answers[currentQuestion].includes(choice);
 
-            //creating the checkbox element prop.
+        label.append(checkbox);
+        label.append(" "+choice);
+
+        checkbox.addEventListener("change",()=>{
+
+            if(checkbox.checked){
+
+                if(!answers[currentQuestion].includes(choice)){
+                    answers[currentQuestion].push(choice);
+                }
+            }
+            else{
+                answers[currentQuestion]=answers[currentQuestion].filter(
+                    savedChoice=>savedChoice!==choice
+                );
+            }
+        });
+
+        container.append(label);
+        container.append(linebreak);
+    });
+}
+
+
+//--------------------------------------
+//        QUANTITATIVE QUESTIONS
+//--------------------------------------
+
+function renderQuantChoices(){
+
+    const container=document.querySelector("#choices");
+    const question=questions[currentQuestion];
+
+    //------------------------------
+    //       QUANT SINGLE
+    //------------------------------
+
+    if(question.type==="quant-single"){
+
+        renderSingleChoice(question,container,"quant");
+    }
+
+    //------------------------------
+    // DATA INTERPRETATION SINGLE
+    //------------------------------
+
+    else if(question.type==="data-interpretation-single"){
+
+        renderDataInterpretationImage();
+        renderSingleChoice(question,container,"di");
+    }
+
+    //------------------------------
+    //       QUANT MULTIPLE
+    //------------------------------
+
+    else if(question.type==="quant-multiple"){
+
+        if(!Array.isArray(answers[currentQuestion])){
+            answers[currentQuestion]=[];
+        }
+
+        question.choices.forEach(choice=>{
+
+            const checkbox=document.createElement("input");
+            const label=document.createElement("label");
+            const linebreak=document.createElement("br");
+
+            checkbox.type="checkbox";
+            checkbox.value=choice;
+
+            checkbox.checked=answers[currentQuestion].includes(choice);
+
             label.append(checkbox);
-            label.append(' '+ choice);
+            label.append(" "+choice);
 
-            //add choices in the HTML element
-            container.append(label);
-            container.append(linebreak);
+            checkbox.addEventListener("change",()=>{
 
-            //loading the saved answers in the question paper
-            checkbox.checked = answers[currentQuestion].includes(choice);
+                if(checkbox.checked){
 
-            //save the choice in the answer array
-            checkbox.addEventListener("change", ()=>{
-
-                if (checkbox.checked) {
-                    if (!answers[currentQuestion].includes(choice)) {
+                    if(!answers[currentQuestion].includes(choice)){
                         answers[currentQuestion].push(choice);
                     }
                 }
                 else{
-                    answers[currentQuestion] = answers[currentQuestion].filter(
-                        savedChoice => savedChoice != choice
+                    answers[currentQuestion]=answers[currentQuestion].filter(
+                        savedChoice=>savedChoice!==choice
                     );
-                }              
-            });           
-        });
-    }
-
-    // --------------------------------
-    // NUMERIC ENTRY
-    // --------------------------------
-
-    else if (questions[currentQuestion].type === "numeric-entry") {
-
-        const input = document.createElement("input");
-
-        input.type = "text";
-        input.className = "numeric-input";
-        input.placeholder = " Enter Answer";
-        input.style.width = "110px";
-        input.style.height = "30px";
-
-        //load answer
-        input.value = answers[currentQuestion];
-
-        container.append(input);
-
-        //save answer
-        input.addEventListener("input", ()=>{
-            answers[currentQuestion] = input.value;
-        });
-    }
-
-    // --------------------------------
-    // QUANTITATIVE COMPARISON
-    // --------------------------------
-
-    else if (questions[currentQuestion].type === "quantitative-comparison") {
-
-        const quantA = document.querySelector('#quantity-a');
-        const quantB = document.querySelector('#quantity-b');
-
-        quantA.innerHTML = "";
-        quantB.innerHTML = "";
-
-        quantA.innerHTML = questions[currentQuestion].quantityA;
-        quantB.innerHTML = questions[currentQuestion].quantityB;
-
-        questions[currentQuestion].choices.forEach((choice)=>{
-
-            const label = document.createElement('label');
-            const radio = document.createElement('input');
-            const linebreak = document.createElement('br');
-
-            radio.type = "radio";
-            radio.name = "comparison";
-            radio.value = choice;
-
-            label.append(radio);
-            label.append(' '+ choice);
-
-            // reload answer
-            if (answers[currentQuestion] === choice) {
-                radio.checked = true;
-            }
+                }
+            });
 
             container.append(label);
             container.append(linebreak);
-
-            // save answer
-            radio.addEventListener("click", ()=>{
-                radio.checked = true;
-                answers[currentQuestion] = choice; // save answer
-            });
-        
         });
     }
+
+    //------------------------------
+    //       NUMERIC ENTRY
+    //------------------------------
+
+    else if(question.type==="numeric-entry"){
+
+        const input=document.createElement("input");
+
+        input.type="text";
+        input.className="numeric-input";
+        input.placeholder="Enter Answer";
+        input.style.width="110px";
+        input.style.height="30px";
+
+        input.value=answers[currentQuestion] ?? "";
+
+        input.addEventListener("input",()=>{
+            answers[currentQuestion]=input.value;
+        });
+
+        container.append(input);
+    }
+
+    //------------------------------
+    // QUANTITATIVE COMPARISON
+    //------------------------------
+
+    else if(question.type==="quantitative-comparison"){
+
+        const quantComparison=document.querySelector("#quantity-comparison");
+        const quantA=document.querySelector("#quantity-a");
+        const quantB=document.querySelector("#quantity-b");
+
+        quantComparison.style.display="flex";
+
+        quantA.innerHTML=question.quantityA ?? "";
+        quantB.innerHTML=question.quantityB ?? "";
+
+        renderSingleChoice(
+            question,
+            container,
+            "comparison"
+        );
+    }
+}
+
+
+//------------------------------
+//   SINGLE CHOICE HELPER
+//------------------------------
+
+function renderSingleChoice(
+    question,
+    container,
+    name
+){
+
+    question.choices.forEach(choice=>{
+
+        const label=document.createElement("label");
+        const radio=document.createElement("input");
+        const linebreak=document.createElement("br");
+
+        radio.type="radio";
+        radio.name=`${name}-${currentQuestion}`;
+        radio.value=choice;
+
+        if(answers[currentQuestion]===choice){
+            radio.checked=true;
+        }
+
+        label.append(radio);
+        label.append(" "+choice);
+
+        radio.addEventListener("change",()=>{
+
+            if(radio.checked){
+                answers[currentQuestion]=choice;
+            }
+        });
+
+        container.append(label);
+        container.append(linebreak);
+    });
+}
+
+
+//----------------------------------
+// DATA INTERPRETATION IMAGE
+//----------------------------------
+
+function renderDataInterpretationImage(){
+
+    const container=document.querySelector("#image");
+    const question=questions[currentQuestion];
+
+    let imageSource=question.image;
+
+    if(
+        !imageSource &&
+        question.passageRef!==null &&
+        question.passageRef!==undefined
+    ){
+        const referenceQuestion=questions.find(
+            item=>Number(item.id)===Number(question.passageRef)
+        );
+
+        if(referenceQuestion){
+            imageSource=referenceQuestion.image;
+        }
+    }
+
+    if(!imageSource){
+        return;
+    }
+
+    const img=document.createElement("img");
+
+    img.src=imageSource;
+    img.alt="Data interpretation graph";
+
+    container.append(img);
+}
+
+
+//----------------------------------
+//   REGULAR QUESTION IMAGE
+//----------------------------------
+
+function renderRegularQuestionImage(){
+
+    const question=questions[currentQuestion];
+    const container=document.querySelector("#qs-image");
+
+    if(
+        question.type==="data-interpretation-single" ||
+        !question.image
+    ){
+        return;
+    }
+
+    const img=document.createElement("img");
+
+    img.src=question.image;
+    img.alt="Question image";
+
+    container.append(img);
 }

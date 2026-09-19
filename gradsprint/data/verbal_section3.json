@@ -1,0 +1,415 @@
+{
+  "test_name": "GRE Practice Test 1",
+  "section": {
+    "name": "Verbal Reasoning 3",
+    "time": 1380,
+    "order": 5,
+    "questions": [
+      {
+        "order": 1,
+        "topic": "text-completion",
+        "subtopic": "tc-single-blank",
+        "expected_time_seconds": 75,
+        "question_type": "text-completion",
+        "difficulty": "medium",
+        "question": "Although the scientist's initial hypothesis was regarded as highly speculative, subsequent experiments provided evidence so compelling that the hypothesis eventually became widely _____.",
+        "instruction": "Select one entry for the blank.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The contrast is between an initially speculative hypothesis and one later supported by compelling evidence. 'Accepted' best completes the sentence.",
+        "choices": [],
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {"order": 1, "text": "dismissed", "is_correct": false},
+              {"order": 2, "text": "accepted", "is_correct": true},
+              {"order": 3, "text": "ignored", "is_correct": false},
+              {"order": 4, "text": "questioned", "is_correct": false},
+              {"order": 5, "text": "obscured", "is_correct": false}
+            ]
+          }
+        ]
+      },
+      {
+        "order": 2,
+        "topic": "text-completion",
+        "subtopic": "tc-double-blank",
+        "expected_time_seconds": 105,
+        "question_type": "text-completion",
+        "difficulty": "hard",
+        "question": "The historian's account is neither entirely _____ nor openly partisan; instead, it adopts a tone that appears measured while occasionally revealing subtle _____.",
+        "instruction": "Select one entry for each blank.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The account lies between complete objectivity and open partisanship. It appears measured but sometimes reveals bias.",
+        "choices": [],
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {"order": 1, "text": "objective", "is_correct": true},
+              {"order": 2, "text": "inflammatory", "is_correct": false},
+              {"order": 3, "text": "incoherent", "is_correct": false}
+            ]
+          },
+          {
+            "order": 2,
+            "choices": [
+              {"order": 1, "text": "bias", "is_correct": true},
+              {"order": 2, "text": "precision", "is_correct": false},
+              {"order": 3, "text": "indifference", "is_correct": false}
+            ]
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "topic": "sentence-equivalence",
+        "subtopic": "se-synonym-pairs",
+        "expected_time_seconds": 90,
+        "question_type": "sentence-equivalence",
+        "difficulty": "medium",
+        "question": "Because the committee's report avoided taking a clear position on the disputed issue, critics described its conclusions as _____.",
+        "instruction": "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "'Equivocal' and 'ambiguous' both indicate a lack of a clear or definite position.",
+        "choices": [
+          {"order": 1, "text": "equivocal", "is_correct": true},
+          {"order": 2, "text": "decisive", "is_correct": false},
+          {"order": 3, "text": "ambiguous", "is_correct": true},
+          {"order": 4, "text": "dogmatic", "is_correct": false},
+          {"order": 5, "text": "innovative", "is_correct": false},
+          {"order": 6, "text": "comprehensive", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 4,
+        "topic": "sentence-equivalence",
+        "subtopic": "se-tone",
+        "expected_time_seconds": 90,
+        "question_type": "sentence-equivalence",
+        "difficulty": "hard",
+        "question": "Far from being intimidated by the hostile questions, the candidate remained _____ throughout the interview.",
+        "instruction": "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "'Composed' and 'unflappable' both indicate remaining calm under pressure.",
+        "choices": [
+          {"order": 1, "text": "composed", "is_correct": true},
+          {"order": 2, "text": "belligerent", "is_correct": false},
+          {"order": 3, "text": "unflappable", "is_correct": true},
+          {"order": 4, "text": "evasive", "is_correct": false},
+          {"order": 5, "text": "resentful", "is_correct": false},
+          {"order": 6, "text": "verbose", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 5,
+        "topic": "text-completion",
+        "subtopic": "tc-triple-blank",
+        "expected_time_seconds": 135,
+        "question_type": "text-completion",
+        "difficulty": "very-hard",
+        "question": "The novelist's reputation, once _____ by critics who considered her work excessively conventional, was later _____ when scholars recognized the subtle experimentation beneath its apparently traditional surface, prompting a substantial _____ of her literary importance.",
+        "instruction": "Select one entry for each blank.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "Her reputation was initially diminished, later revived, and finally reassessed as scholars changed their interpretation of her work.",
+        "choices": [],
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {"order": 1, "text": "diminished", "is_correct": true},
+              {"order": 2, "text": "enhanced", "is_correct": false},
+              {"order": 3, "text": "authenticated", "is_correct": false}
+            ]
+          },
+          {
+            "order": 2,
+            "choices": [
+              {"order": 1, "text": "revived", "is_correct": true},
+              {"order": 2, "text": "obscured", "is_correct": false},
+              {"order": 3, "text": "discarded", "is_correct": false}
+            ]
+          },
+          {
+            "order": 3,
+            "choices": [
+              {"order": 1, "text": "reassessment", "is_correct": true},
+              {"order": 2, "text": "rejection", "is_correct": false},
+              {"order": 3, "text": "simplification", "is_correct": false}
+            ]
+          }
+        ]
+      },
+      {
+        "order": 6,
+        "topic": "reading-comprehension",
+        "subtopic": "rc-main-idea",
+        "expected_time_seconds": 120,
+        "question_type": "reading-single",
+        "difficulty": "medium",
+        "question": "Which of the following best states the main idea of the passage?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": "For much of the twentieth century, urban planners treated city parks primarily as recreational amenities. More recent research, however, has emphasized their broader ecological functions. Urban vegetation can moderate local temperatures, absorb some air pollutants, reduce storm-water runoff, and provide habitat for wildlife. These benefits do not imply that every park produces identical ecological effects; size, vegetation type, location, and management practices all influence performance. Thus, evaluating urban green spaces solely by the amount of land they occupy can obscure substantial differences in their environmental value.",
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The passage emphasizes both the ecological benefits of urban green spaces and the fact that those benefits depend on characteristics beyond size.",
+        "choices": [
+          {"order": 1, "text": "Urban parks should be designed exclusively for ecological purposes rather than recreation.", "is_correct": false},
+          {"order": 2, "text": "Urban green spaces can provide significant ecological benefits, but their value depends on more than their size alone.", "is_correct": true},
+          {"order": 3, "text": "Most twentieth-century planners underestimated the recreational value of city parks.", "is_correct": false},
+          {"order": 4, "text": "The ecological value of a park is determined primarily by the wildlife species it contains.", "is_correct": false},
+          {"order": 5, "text": "Modern cities generally contain insufficient land for environmentally valuable parks.", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 7,
+        "topic": "reading-comprehension",
+        "subtopic": "rc-inference",
+        "expected_time_seconds": 105,
+        "question_type": "reading-single",
+        "difficulty": "hard",
+        "question": "Which of the following can most reasonably be inferred from the passage?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": 6,
+        "image": null,
+        "explanation": "Because ecological performance depends on several characteristics besides size, equally sized parks can have substantially different ecological values.",
+        "choices": [
+          {"order": 1, "text": "Two parks of equal size may differ substantially in their ecological value.", "is_correct": true},
+          {"order": 2, "text": "Recreational use necessarily reduces the ecological value of a park.", "is_correct": false},
+          {"order": 3, "text": "Large parks always provide greater environmental benefits than small parks.", "is_correct": false},
+          {"order": 4, "text": "Urban vegetation eliminates most forms of air pollution.", "is_correct": false},
+          {"order": 5, "text": "Wildlife habitat is the most important function of urban parks.", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 8,
+        "topic": "reading-comprehension",
+        "subtopic": "rc-supporting-detail",
+        "expected_time_seconds": 90,
+        "question_type": "reading-multiple",
+        "difficulty": "hard",
+        "question": "According to the passage, which of the following can influence the ecological performance of an urban park?",
+        "instruction": "Select all that apply.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": 6,
+        "image": null,
+        "explanation": "The passage explicitly identifies vegetation type and management practices as factors affecting ecological performance.",
+        "choices": [
+          {"order": 1, "text": "Vegetation type", "is_correct": true},
+          {"order": 2, "text": "Management practices", "is_correct": true},
+          {"order": 3, "text": "The age of nearby buildings", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 9,
+        "topic": "text-completion",
+        "subtopic": "tc-contrast",
+        "expected_time_seconds": 90,
+        "question_type": "text-completion",
+        "difficulty": "hard",
+        "question": "The professor's lectures appeared spontaneous, but this apparent informality was actually the result of meticulous preparation; what seemed _____ was, in fact, carefully orchestrated.",
+        "instruction": "Select one entry for the blank.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The contrast is between appearing spontaneous and actually being carefully planned. 'Improvised' best expresses the apparent spontaneity.",
+        "choices": [],
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {"order": 1, "text": "improvised", "is_correct": true},
+              {"order": 2, "text": "laborious", "is_correct": false},
+              {"order": 3, "text": "repetitive", "is_correct": false},
+              {"order": 4, "text": "conventional", "is_correct": false},
+              {"order": 5, "text": "incomprehensible", "is_correct": false}
+            ]
+          }
+        ]
+      },
+      {
+        "order": 10,
+        "topic": "sentence-equivalence",
+        "subtopic": "se-word-connotation",
+        "expected_time_seconds": 90,
+        "question_type": "sentence-equivalence",
+        "difficulty": "hard",
+        "question": "The author's criticism is remarkably _____: even when rejecting an opposing argument, she avoids ridicule or personal attack.",
+        "instruction": "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "'Temperate' and 'measured' both describe restrained and moderate criticism.",
+        "choices": [
+          {"order": 1, "text": "temperate", "is_correct": true},
+          {"order": 2, "text": "vitriolic", "is_correct": false},
+          {"order": 3, "text": "measured", "is_correct": true},
+          {"order": 4, "text": "derisive", "is_correct": false},
+          {"order": 5, "text": "dogmatic", "is_correct": false},
+          {"order": 6, "text": "capricious", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 11,
+        "topic": "reading-comprehension",
+        "subtopic": "rc-primary-purpose",
+        "expected_time_seconds": 120,
+        "question_type": "reading-single",
+        "difficulty": "hard",
+        "question": "The primary purpose of the passage is to",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": "Early studies of workplace productivity often assumed that greater specialization would invariably increase efficiency. By assigning employees narrowly defined tasks, managers could reduce the time required to switch between activities and allow workers to develop specialized expertise. Yet later research complicated this picture. Excessive specialization can produce monotony, reduce employees' understanding of broader organizational goals, and make firms less adaptable when conditions change. Consequently, many organizations now attempt to balance specialization with job rotation, cross-functional teams, or other practices that expose workers to a wider range of responsibilities.",
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "The passage first presents benefits of specialization, then discusses its disadvantages and explains why organizations may seek a balance.",
+        "choices": [
+          {"order": 1, "text": "argue that specialization should be eliminated from modern workplaces", "is_correct": false},
+          {"order": 2, "text": "explain why the benefits of specialization must be weighed against its potential disadvantages", "is_correct": true},
+          {"order": 3, "text": "demonstrate that job rotation always increases employee productivity", "is_correct": false},
+          {"order": 4, "text": "describe how early factories introduced cross-functional teams", "is_correct": false},
+          {"order": 5, "text": "show that specialized employees generally lack technical expertise", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 12,
+        "topic": "reading-comprehension",
+        "subtopic": "rc-inference",
+        "expected_time_seconds": 105,
+        "question_type": "reading-single",
+        "difficulty": "hard",
+        "question": "Which of the following is most strongly supported by the passage?",
+        "instruction": "Select one answer.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": 11,
+        "image": null,
+        "explanation": "The passage states that excessive specialization can make firms less adaptable, suggesting that broader responsibilities can contribute to adaptability.",
+        "choices": [
+          {"order": 1, "text": "Employees who perform varied responsibilities may help an organization respond more flexibly to changing conditions.", "is_correct": true},
+          {"order": 2, "text": "Specialization has no effect on the speed with which workers perform tasks.", "is_correct": false},
+          {"order": 3, "text": "Cross-functional teams are less efficient than specialized departments.", "is_correct": false},
+          {"order": 4, "text": "Monotonous work necessarily causes employees to leave their jobs.", "is_correct": false},
+          {"order": 5, "text": "Modern organizations have largely abandoned specialized job roles.", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 13,
+        "topic": "reading-comprehension",
+        "subtopic": "rc-evidence-reasoning",
+        "expected_time_seconds": 105,
+        "question_type": "reading-multiple",
+        "difficulty": "hard",
+        "question": "Which of the following are presented in the passage as potential disadvantages of excessive specialization?",
+        "instruction": "Select all that apply.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": 11,
+        "image": null,
+        "explanation": "The passage explicitly mentions monotony and reduced understanding of broader organizational goals. It says specialization can increase, rather than reduce, expertise in assigned tasks.",
+        "choices": [
+          {"order": 1, "text": "Greater monotony for employees", "is_correct": true},
+          {"order": 2, "text": "Reduced understanding of broader organizational goals", "is_correct": true},
+          {"order": 3, "text": "Reduced expertise in assigned tasks", "is_correct": false}
+        ],
+        "blanks": []
+      },
+      {
+        "order": 14,
+        "topic": "text-completion",
+        "subtopic": "tc-cause-effect",
+        "expected_time_seconds": 105,
+        "question_type": "text-completion",
+        "difficulty": "hard",
+        "question": "Because the archaeological evidence was fragmentary and often contradictory, researchers were understandably _____ about drawing definitive conclusions regarding the settlement's origins.",
+        "instruction": "Select one entry for the blank.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "Fragmentary and contradictory evidence would make researchers cautious about drawing definitive conclusions. 'Circumspect' means cautious or wary.",
+        "choices": [],
+        "blanks": [
+          {
+            "order": 1,
+            "choices": [
+              {"order": 1, "text": "circumspect", "is_correct": true},
+              {"order": 2, "text": "dogmatic", "is_correct": false},
+              {"order": 3, "text": "indifferent", "is_correct": false},
+              {"order": 4, "text": "exuberant", "is_correct": false},
+              {"order": 5, "text": "dismissive", "is_correct": false}
+            ]
+          }
+        ]
+      },
+      {
+        "order": 15,
+        "topic": "sentence-equivalence",
+        "subtopic": "se-sentence-logic",
+        "expected_time_seconds": 105,
+        "question_type": "sentence-equivalence",
+        "difficulty": "very-hard",
+        "question": "The new evidence did not completely overturn the prevailing theory, but it did _____ its claim to explain every observed phenomenon.",
+        "instruction": "Select the two answer choices that complete the sentence and produce sentences that are alike in meaning.",
+        "quantity_a": null,
+        "quantity_b": null,
+        "passage": null,
+        "passage_ref_order": null,
+        "image": null,
+        "explanation": "'Undermine' and 'weaken' both indicate reducing the strength of the theory's claim without completely overturning the theory.",
+        "choices": [
+          {"order": 1, "text": "undermine", "is_correct": true},
+          {"order": 2, "text": "vindicate", "is_correct": false},
+          {"order": 3, "text": "weaken", "is_correct": true},
+          {"order": 4, "text": "substantiate", "is_correct": false},
+          {"order": 5, "text": "clarify", "is_correct": false},
+          {"order": 6, "text": "expand", "is_correct": false}
+        ],
+        "blanks": []
+      }
+    ]
+  }
+}
