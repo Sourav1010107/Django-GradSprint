@@ -124,6 +124,11 @@ function toggleTime() {
 
 
 function reviewTable() {
+
+    //calculator
+    const calculator = document.querySelector("#calculator");
+    calculator.classList.add("hidden");
+    //calculator close
     const tableBody = document.querySelector('#review-table-body');
     const modal = document.querySelector('#modal');
     const mainPrompt = document.querySelector('#main-prompt');
