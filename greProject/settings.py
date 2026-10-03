@@ -81,11 +81,14 @@ WSGI_APPLICATION = 'greProject.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "gradsprint_db",
-        "USER": "gradsprint_user",
-        "PASSWORD": "12340",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "NAME": os.getenv("PGDATABASE"),
+        "USER": os.getenv("PGUSER"),
+        "PASSWORD": os.getenv("PGPASSWORD"),
+        "HOST": os.getenv("PGHOST"),
+        "PORT": os.getenv("PGPORT","5432"),
+        "OPTIONS":{
+            "sslmode": "require",
+        }
         
     }
 }
