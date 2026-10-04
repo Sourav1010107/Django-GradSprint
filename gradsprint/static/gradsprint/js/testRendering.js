@@ -525,7 +525,7 @@ async function finishTest() {
 //-----------------------------------
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    loadTest(2);
+    loadTest(3);
     
 });
 
